@@ -17,7 +17,7 @@ public class BluwxController {
     @RequestMapping("/index")
     public String index(){
         System.out.println("11111111111111");
-        return "indexs";
+        return "index";
     }
 
 

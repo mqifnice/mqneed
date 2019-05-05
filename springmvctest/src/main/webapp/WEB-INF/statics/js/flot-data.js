@@ -83,18 +83,18 @@ $(document).ready(function() {
     function plot() {
         var sin = [],
             cos = [];
-        for (var i = 0; i < 12; i += 0.2) {
-            sin.push([i, Math.sin(i + offset)]);
-            cos.push([i, Math.cos(i + offset)]);
+        for (var i = 0; i < 12000; i += 0.2) {
+            sin.push([i, 0.5]);
+            // cos.push([i, Math.cos(i + offset)]);
         }
         var options = {
             series: {
                 lines: {
                     show: true
                 },
-                points: {
-                    show: true
-                }
+                // points: {
+                //     show: true
+                // }
             },
             grid: {
                 hoverable: true //IMPORTANT! this is needed for tooltip to work

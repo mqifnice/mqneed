@@ -15,7 +15,8 @@ var Auth = {
 		lowin_register: document.querySelector('.lowin-register'),
 		lowin_footer: document.querySelector('.lowin-footer'),
 		box: document.getElementsByClassName('lowin-box'),
-		option: {}
+		option: {
+		}
 	},
 	register(e) {
 		Auth.vars.lowin_login.className += ' lowin-animated';
@@ -45,7 +46,7 @@ var Auth = {
 		},1000);
 
 		Auth.setHeight(Auth.vars.lowin_login.offsetHeight + Auth.vars.lowin_footer.offsetHeight);
-
+        Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.login_url);
 		e.preventDefault();
 	},
 	forgot(e) {
@@ -61,7 +62,7 @@ var Auth = {
 		Auth.vars.login_btn.innerText = 'Forgot Password';
 
 		Auth.setHeight(Auth.vars.lowin_wrapper_height - Auth.vars.password_group_height);
-		Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.forgot_url);
+		// Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.forgot_url);
 
 		e.preventDefault();
 	},
