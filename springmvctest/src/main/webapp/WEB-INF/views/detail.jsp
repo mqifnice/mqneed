@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <%@ page language="java" pageEncoding="UTF-8" %>
@@ -10,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
+
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
     <!-- Bootstrap Core CSS -->
@@ -18,9 +18,12 @@
     <link href="/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="/css/customer.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
+
+
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -60,7 +63,9 @@
                     <!-- Logo text -->
                     <span>
                             <!-- dark Logo text -->
-                            <img src="/assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
+                                                   <text>红番茄&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</text>
+
+                            <%--<img src="/assets/images/logo-text.png" alt="homepage" class="dark-logo"/>--%>
                         </span>
                 </a>
             </div>
@@ -113,7 +118,7 @@
                         <a href="" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>详情</a>
                     </li>
                     <li>
-                        <a href="/admin/login" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>账户</a>
+                        <a href="/admin/user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>账户</a>
                     </li>
                 </ul>
                 <div class="text-center m-t-30">
@@ -222,268 +227,188 @@
                             <%--<option value="3">April</option>--%>
                             <%--</select>--%>
                             <%--<h4 class="card-title">Projects of the Month</h4>--%>
-                            <div class="table-responsive m-t-40">
-                                <table class="table stylish-table" style="width: 20%;display: inline">
+                            <div class="table-responsive m-t-40 templist">
+                                <table class="table stylish-table" style="width: 25%;">
                                     <thead>
                                     <tr>
-                                        <th colspan="2">Assigned</th>
-                                        <th>Name</th>
-                                        <th>Budget</th>
+                                        <th>#</th>
+                                        <th>温度值℃</th>
+                                        <th>时间</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td style="width:50px;"><span class="round">S</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Sunil Joshi</h6>
-                                            <small class="text-muted">Web Designer</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$3.9K</td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td><span class="round"><img src="/assets/images/users/2.jpg" alt="user"
-                                                                     width="50"/></span></td>
-                                        <td>
-                                            <h6>Andrew</h6>
-                                            <small class="text-muted">Project Manager</small>
-                                        </td>
-                                        <td>Real Homes</td>
-                                        <td>$23.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-success">B</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Bhavesh patel</h6>
-                                            <small class="text-muted">Developer</small>
+                                            25.6
                                         </td>
-                                        <td>MedicalPro Theme</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-primary">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Nirav Joshi</h6>
-                                            <small class="text-muted">Frontend Eng</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$10.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-warning">M</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Micheal Doe</h6>
-                                            <small class="text-muted">Content Writer</small>
+                                            25.6
                                         </td>
-                                        <td>Helping Hands</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-danger">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Johnathan</h6>
-                                            <small class="text-muted">Graphic</small>
+                                            25.6
                                         </td>
-                                        <td>Digital Agency</td>
-                                        <td>$2.6K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <table class="table stylish-table" style="width: 20%;display: inline">
+                                <table class="table stylish-table" style="width: 25%;">
                                     <thead>
                                     <tr>
-                                        <th colspan="2">Assigned</th>
-                                        <th>Name</th>
-                                        <th>Budget</th>
+                                        <th>#</th>
+                                        <th>温度值℃</th>
+                                        <th>时间</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td style="width:50px;"><span class="round">S</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Sunil Joshi</h6>
-                                            <small class="text-muted">Web Designer</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$3.9K</td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td><span class="round"><img src="/assets/images/users/2.jpg" alt="user"
-                                                                     width="50"/></span></td>
-                                        <td>
-                                            <h6>Andrew</h6>
-                                            <small class="text-muted">Project Manager</small>
-                                        </td>
-                                        <td>Real Homes</td>
-                                        <td>$23.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-success">B</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Bhavesh patel</h6>
-                                            <small class="text-muted">Developer</small>
+                                            25.6
                                         </td>
-                                        <td>MedicalPro Theme</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-primary">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Nirav Joshi</h6>
-                                            <small class="text-muted">Frontend Eng</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$10.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-warning">M</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Micheal Doe</h6>
-                                            <small class="text-muted">Content Writer</small>
+                                            25.6
                                         </td>
-                                        <td>Helping Hands</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-danger">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Johnathan</h6>
-                                            <small class="text-muted">Graphic</small>
+                                            25.6
                                         </td>
-                                        <td>Digital Agency</td>
-                                        <td>$2.6K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <table class="table stylish-table" style="width: 20%;display: inline">
+                                <table class="table stylish-table" style="width: 25%;">
                                     <thead>
                                     <tr>
-                                        <th colspan="2">Assigned</th>
-                                        <th>Name</th>
-                                        <th>Budget</th>
+                                        <th>#</th>
+                                        <th>温度值℃</th>
+                                        <th>时间</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td style="width:50px;"><span class="round">S</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Sunil Joshi</h6>
-                                            <small class="text-muted">Web Designer</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$3.9K</td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td><span class="round"><img src="/assets/images/users/2.jpg" alt="user"
-                                                                     width="50"/></span></td>
-                                        <td>
-                                            <h6>Andrew</h6>
-                                            <small class="text-muted">Project Manager</small>
-                                        </td>
-                                        <td>Real Homes</td>
-                                        <td>$23.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-success">B</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Bhavesh patel</h6>
-                                            <small class="text-muted">Developer</small>
+                                            25.6
                                         </td>
-                                        <td>MedicalPro Theme</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-primary">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Nirav Joshi</h6>
-                                            <small class="text-muted">Frontend Eng</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$10.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-warning">M</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Micheal Doe</h6>
-                                            <small class="text-muted">Content Writer</small>
+                                            25.6
                                         </td>
-                                        <td>Helping Hands</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-danger">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Johnathan</h6>
-                                            <small class="text-muted">Graphic</small>
+                                            25.6
                                         </td>
-                                        <td>Digital Agency</td>
-                                        <td>$2.6K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <table class="table stylish-table" style="width: 20%;display: inline">
+                                <table class="table stylish-table" style="width: 25%;">
                                     <thead>
                                     <tr>
-                                        <th colspan="2">Assigned</th>
-                                        <th>Name</th>
-                                        <th>Budget</th>
+                                        <th>#</th>
+                                        <th>温度值℃</th>
+                                        <th>时间</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td style="width:50px;"><span class="round">S</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Sunil Joshi</h6>
-                                            <small class="text-muted">Web Designer</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$3.9K</td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td><span class="round"><img src="/assets/images/users/2.jpg" alt="user"
-                                                                     width="50"/></span></td>
-                                        <td>
-                                            <h6>Andrew</h6>
-                                            <small class="text-muted">Project Manager</small>
-                                        </td>
-                                        <td>Real Homes</td>
-                                        <td>$23.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-success">B</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Bhavesh patel</h6>
-                                            <small class="text-muted">Developer</small>
+                                            25.6
                                         </td>
-                                        <td>MedicalPro Theme</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-primary">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Nirav Joshi</h6>
-                                            <small class="text-muted">Frontend Eng</small>
+                                            25.6
                                         </td>
-                                        <td>Elite Admin</td>
-                                        <td>$10.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-warning">M</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Micheal Doe</h6>
-                                            <small class="text-muted">Content Writer</small>
+                                            25.6
                                         </td>
-                                        <td>Helping Hands</td>
-                                        <td>$12.9K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="round round-danger">N</span></td>
+                                        <td>1</td>
                                         <td>
-                                            <h6>Johnathan</h6>
-                                            <small class="text-muted">Graphic</small>
+                                            25.6
                                         </td>
-                                        <td>Digital Agency</td>
-                                        <td>$2.6K</td>
+                                        <td>2019/5/5 16:03</td>
                                     </tr>
                                     </tbody>
                                 </table>

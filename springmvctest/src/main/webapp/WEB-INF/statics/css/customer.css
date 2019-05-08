@@ -1,0 +1,9 @@
+.templist {
+    display: flex;
+    flex-direction: row;
+}
+
+.templist table tr {
+    border: 1px solid gray;
+}
+

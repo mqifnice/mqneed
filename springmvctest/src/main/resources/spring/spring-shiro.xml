@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    <!--&lt;!&ndash; 启用shrio授权注解拦截方式 &ndash;&gt;-->
+    <!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+    <!--&lt;!&ndash; 装配 securityManager &ndash;&gt;-->
+    <!--<property name="securityManager" ref="securityManager"/>-->
+    <!--&lt;!&ndash; 配置登陆页面 &ndash;&gt;-->
+    <!--<property name="loginUrl" value="/views/login.jsp"/>-->
+    <!--&lt;!&ndash; 登陆成功后的一面 &ndash;&gt;-->
+    <!--<property name="successUrl" value="/views/index.jsp"/>-->
+    <!--&lt;!&ndash;<span style="white-space:pre"></span>&ndash;&gt;-->
+    <!--<property name="unauthorizedUrl" value="/views/unauthorized.jsp"/>-->
+    <!--&lt;!&ndash; 具体配置需要拦截哪些 URL, 以及访问对应的 URL 时使用 Shiro 的什么 Filter 进行拦截.  &ndash;&gt;-->
+    <!--<property name="filterChainDefinitions">-->
+    <!--<value>-->
+    <!--/assets/** = anon-->
+    <!--/image/** = anon-->
+    <!--/js/** = anon-->
+    <!--/css/** = anon-->
+    <!--&lt;!&ndash; 可匿名访问路径，例如：验证码、登录连接、退出连接等 &ndash;&gt;-->
+    <!--/views/login = anon-->
+    <!--/index.jsp=anon-->
+    <!--/views/success.jsp=anon-->
+    <!--/views/fail.jsp=anon-->
+    <!--/views/user.jsp = roles[user]-->
+    <!--/views/admin.jsp = roles[admin]-->
+    <!--/logout = logout-->
+    <!--</value>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 配置缓存管理器 &ndash;&gt;-->
+    <!--<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">-->
+    <!--&lt;!&ndash; 指定 ehcache 的配置文件 &ndash;&gt;-->
+    <!--<property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 配置进行授权和认证的 Realm &ndash;&gt;-->
+    <!--<bean id="myRealm" class="com.until.UserRealm">-->
+    <!--&lt;!&ndash;<property name="userService" ref="userService"/>&ndash;&gt;-->
+    <!--</bean>-->
+    <!--&lt;!&ndash;<bean id="userService" class="com.dao.AdminMapper"/>&ndash;&gt;-->
+    <!--&lt;!&ndash; 配置 Shiro 的 SecurityManager Bean. &ndash;&gt;-->
+    <!--<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
+    <!--<property name="cacheManager" ref="cacheManager"/>-->
+    <!--<property name="realm" ref="myRealm"/>-->
+    <!--<property name="sessionMode" value="native">-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. &ndash;&gt;-->
+    <!--<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>-->
+</beans>
