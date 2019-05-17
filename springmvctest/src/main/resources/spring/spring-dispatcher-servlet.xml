@@ -118,7 +118,7 @@
         <!-- 登录成功后要跳转的连接(此处已经在登录中处理了) -->
         <!-- <property name="successUrl" value="/index.jsp"></property> -->
         <!-- 未认证时要跳转的连接 -->
-        <property name="unauthorizedUrl" value="/login"></property>
+        <property name="unauthorizedUrl" value="/login.jsp"></property>
         <!-- shiro连接约束配置 -->
         <property name="filterChainDefinitions">
             <value>
@@ -127,8 +127,12 @@
                 /image/** = anon
                 /js/** = anon
                 /css/** = anon
+                /admin/register=anon
+                /admin/forgot*=anon
+                /blu/**=anon
                 <!-- 可匿名访问路径，例如：验证码、登录连接、退出连接等 -->
-                /auth/login = anon
+                <!--/auth/login = anon-->
+
                 <!-- 剩余其他路径，必须认证通过才可以访问 -->
                 /** = authc
             </value>

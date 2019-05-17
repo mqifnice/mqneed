@@ -19,6 +19,26 @@ public class Admin {
 
   private Integer power;
 
+  private Long outDate;
+
+  private String validatacode;
+
+  public Long getOutDate() {
+    return outDate;
+  }
+
+  public void setOutDate(Long outDate) {
+    this.outDate = outDate;
+  }
+
+  public String getValidatacode() {
+    return validatacode;
+  }
+
+  public void setValidatacode(String validatacode) {
+    this.validatacode = validatacode;
+  }
+
   public Integer getId() {
     return id;
   }

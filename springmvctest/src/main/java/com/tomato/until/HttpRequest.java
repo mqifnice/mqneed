@@ -13,9 +13,9 @@ public class HttpRequest {
 
   public static void main(String[] args) {
     // 发送 GET 请求
-    String s =
-        HttpRequest.sendGet("http://v.qq.com/x/cover/kvehb7okfxqstmc.html?vid=e01957zem6o", "");
-    System.out.println(s);
+    //    String s =
+    // HttpRequest.sendGet("http://v.qq.com/x/cover/kvehb7okfxqstmc.html?vid=e01957zem6o", "");
+    //    System.out.println(s);
 
     //        //发送 POST 请求
     //        String

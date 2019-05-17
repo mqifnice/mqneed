@@ -11,7 +11,7 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
-    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <title></title>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -475,6 +475,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
+            Copyright © 2019 四川红番茄科技有限公司 版权所有|蜀ICP备17041385号-2
             <%--© 2017 Monster Admin by wrappixel.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>--%>
         </footer>
         <!-- ============================================================== -->

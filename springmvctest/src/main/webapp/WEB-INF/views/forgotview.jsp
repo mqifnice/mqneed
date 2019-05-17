@@ -59,8 +59,9 @@
                     <!-- Logo text -->
                     <span>
                             <!-- dark Logo text -->
-                           <text>红番茄&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</text>
-                            <%--<img src="/assets/images/logo-text.png" alt="homepage" class="dark-logo" />--%>
+                                                   <text>红番茄&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</text>
+
+                            <%--<img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"/>--%>
                         </span>
                 </a>
             </div>
@@ -73,13 +74,13 @@
                 <!-- ============================================================== -->
                 <ul class="navbar-nav mr-auto mt-md-0 ">
                     <!-- This is  -->
-                    <li class="nav-item"><a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
-                                            href="javascript:void(0)"><i class="ti-menu"></i></a></li>
-                    <li class="nav-item hidden-sm-down">
-                        <form class="app-search p-l-20">
-                            <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i
-                                class="ti-search"></i></a>
-                        </form>
+                    <%--<li class="nav-item"><a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"--%>
+                    <%--href="javascript:void(0)"><i class="ti-menu"></i></a></li>--%>
+                    <%--<li class="nav-item hidden-sm-down">--%>
+                    <%--<form class="app-search p-l-20">--%>
+                    <%--<input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i--%>
+                    <%--class="ti-search"></i></a>--%>
+                    <%--</form>--%>
                     </li>
                 </ul>
                 <!-- ============================================================== -->
@@ -87,7 +88,9 @@
                 <!-- ============================================================== -->
                 <ul class="navbar-nav my-lg-0">
                     <li class="nav-item dropdown">
-                        <%--<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>--%>
+                        <%--<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""--%>
+                        <%--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img--%>
+                        <%--src="assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5"/>Markarn Doe</a>--%>
                     </li>
                 </ul>
             </div>
@@ -105,28 +108,44 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li>
-                        <a href="" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>设备列表</a>
-                    </li>
-                    <li>
-                        <a href="/device/detail" class="waves-effect"><i class="fa fa-clock-o m-r-10"
-                                                                         aria-hidden="true"></i>详情</a>
-                    </li>
-                    <li>
-                        <a href="/admin/user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>账户</a>
-                    </li>
-
                     <%--<li>--%>
-                    <%--<a href="icon-fontawesome.html" class="waves-effect"><i class="fa fa-font m-r-10" aria-hidden="true"></i>Icons</a>--%>
+                    <%--<a href="/admin/login" class="waves-effect"><i class="fa fa-table m-r-10"--%>
+                    <%--aria-hidden="true"></i>设备列表</a>--%>
                     <%--</li>--%>
                     <%--<li>--%>
-                    <%--<a href="map-google.homepagehomepagehometml" class="waves-effect"><i class="fa fa-globe m-r-10" aria-hidden="true"></i>Google Map</a>--%>
+                    <%--<a href="/device/detail" class="waves-effect"><i class="fa fa-clock-o m-r-10"--%>
+                    <%--aria-hidden="true"></i>详情</a>--%>
                     <%--</li>--%>
                     <%--<li>--%>
-                    <%--<a href="pages-blank.html" class="waves-effect"><i class="fa fa-columns m-r-10" aria-hidden="true"></i>Blank Page</a>--%>
+                    <%--<a href="/admin/user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>账户</a>--%>
                     <%--</li>--%>
                     <%--<li>--%>
-                    <%--<a href="pages-error-404.html" class="waves-effect"><i class="fa fa-info-circle m-r-10" aria-hidden="true"></i>Error 404</a>--%>
+                    <%--<a href="index.html" class="waves-effect"><i class="fa fa-clock-o m-r-10"--%>
+                    <%--aria-hidden="true"></i>Dashboard</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="pages-profile.html" class="waves-effect"><i class="fa fa-user m-r-10"--%>
+                    <%--aria-hidden="true"></i>Profile</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="table-basic.html" class="waves-effect"><i class="fa fa-table m-r-10"--%>
+                    <%--aria-hidden="true"></i>Basic Table</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="icon-fontawesome.html" class="waves-effect"><i class="fa fa-font m-r-10"--%>
+                    <%--aria-hidden="true"></i>Icons</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="map-google.html" class="waves-effect"><i class="fa fa-globe m-r-10"--%>
+                    <%--aria-hidden="true"></i>Google Map</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="pages-blank.html" class="waves-effect"><i class="fa fa-columns m-r-10"--%>
+                    <%--aria-hidden="true"></i>Blank Page</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="pages-error-404.html" class="waves-effect"><i class="fa fa-info-circle m-r-10"--%>
+                    <%--aria-hidden="true"></i>Error 404</a>--%>
                     <%--</li>--%>
                 </ul>
                 <div class="text-center m-t-30">
@@ -153,10 +172,10 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-6 col-8 align-self-center">
-                    <%--<h3 class="text-themecolor m-b-0 m-t-0">Table</h3>--%>
+                    <h3 class="text-themecolor m-b-0 m-t-0"></h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">首页</a></li>
-                        <li class="breadcrumb-item active">列表</li>
+                        <li class="breadcrumb-item active">更新密码</li>
                     </ol>
                 </div>
                 <div class="col-md-6 col-4 align-self-center">
@@ -169,65 +188,75 @@
             <!-- ============================================================== -->
             <!-- Start Page Content -->
             <!-- ============================================================== -->
+            <!-- Row -->
             <div class="row">
-                <!-- column -->
-                <div class="col-sm-12">
+                <!-- Column -->
+                <%--<div class="col-lg-4 col-xlg-3 col-md-5">--%>
+                <%--<div class="card">--%>
+                <%--<div class="card-block">--%>
+                <%--<center class="m-t-30"><img src="assets/images/users/5.jpg" class="img-circle" width="150"/>--%>
+                <%--<h4 class="card-title m-t-10">Hanna Gover</h4>--%>
+                <%--<h6 class="card-subtitle">Accoubts Manager Amix corp</h6>--%>
+                <%--<div class="row text-center justify-content-md-center">--%>
+                <%--<div class="col-4"><a href="javascript:void(0)" class="link"><i--%>
+                <%--class="icon-people"></i> <font class="font-medium">254</font></a></div>--%>
+                <%--<div class="col-4"><a href="javascript:void(0)" class="link"><i--%>
+                <%--class="icon-picture"></i> <font class="font-medium">54</font></a></div>--%>
+                <%--</div>--%>
+                <%--</center>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
                         <div class="card-block">
-                            <%--<h4 class="card-title">Basic Table</h4>--%>
-                            <%--<h6 class="card-subtitle">Add class <code>.table</code></h6>--%>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>设备</th>
-                                        <th>记录点</th>
-                                        <th>最高温</th>
-                                        <th>最低温</th>
-                                        <th>上传人</th>
-                                        <th>上传时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class='detail' tom='1'>
-                                        <td>1</td>
-                                        <td>BL0000001</td>
-                                        <td>1351</td>
-                                        <td>35℃</td>
-                                        <td>8℃</td>
-                                        <td>tom</td>
-                                        <td>2019/5/4 21:17</td>
-                                    </tr>
-                                    <tr class='detail' tom='1'>
-                                        <td>2</td>
-                                        <td>BL0000001</td>
-                                        <td>1351</td>
-                                        <td>35℃</td>
-                                        <td>8℃</td>
-                                        <td>tom</td>
-                                        <td>2019/5/4 21:17</td>
-                                    </tr>
+                            <form action="/admin/forgotsavepwd" class="form-horizontal form-material"
+                                  onsubmit="return checkpwd()" method=post>
+                                <div class="form-group">
+                                    <label class="col-md-12">账号名</label>
+                                    <div class="col-md-12">
+                                        <input name="id" value="${admin.id}" type=hidden>
+                                        <input type="text" name="name" placeholder="${admin.name}"
+                                               class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">邮箱</label>
+                                    <div class="col-md-12">
+                                        <input type="email" placeholder="${admin.email}"
+                                               class="form-control form-control-line" name="example-email"
+                                               id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">密码</label>
+                                    <div class="col-md-12">
+                                        <input type="password" id="p1" name="pwd" value=""
+                                               class="form-control form-control-line" required autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">确认密码</label>
+                                    <div class="col-md-12">
+                                        <input type="password" id="p2" value="" class="form-control form-control-line"
+                                               required autocomplete="off">
+                                    </div>
+                                </div>
 
-
-                                    </tbody>
-                                </table>
-                                <li class=""><a href="">首页</a>
-                                    <a href="">上一页</a>
-                                    <span class="tP">1</span>
-                                    <a href="">2</a>
-                                    <a href="">3</a>
-                                    <a href="">4</a>
-                                    <a href="">5</a>
-                                    <a href="">6</a>
-                                    <a href="">下一页</a>
-                                    <a href="">尾页</a>
-                                </li>
-                            </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-success">提交</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+                <!-- Column -->
             </div>
+            <!-- Row -->
             <!-- ============================================================== -->
             <!-- End PAge Content -->
             <!-- ============================================================== -->
@@ -240,7 +269,9 @@
         <!-- ============================================================== -->
         <footer class="footer text-center">
             Copyright © 2019 四川红番茄科技有限公司 版权所有|蜀ICP备17041385号-2
-            <%--© 2017 Monster Admin by wrappixel.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>--%>
+            <%--© 2017 Monster Admin by wrappixel.More Templates <a href="http://www.cssmoban.com/" target="_blank"--%>
+            <%--title="模板之家">模板之家</a> - Collect from <a--%>
+            <%--href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>--%>
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -275,15 +306,16 @@
 <!-- ============================================================== -->
 <script src="/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
+
 <script>
-    $('.detail').dblclick(function (e) {
-
-        console.log(e);
-        console.log(this);
-        alert($(this).attr('tom'));
-
-        // alert( $(e).find('td').firstChild.attr('tom'));
-        window.location.href = '/device/detail'
-    });
+    function checkpwd() {
+        let p1 = $('#p1').val();
+        let p2 = $('#p2').val();
+        if (p1 == p2) {
+            return true;
+        }
+        return false;
+    }
 </script>
+
 </html>

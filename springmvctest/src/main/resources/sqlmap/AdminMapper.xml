@@ -10,10 +10,12 @@
         <result column="idelete" property="idelete" jdbcType="INTEGER"/>
         <result column="message" property="message" jdbcType="VARCHAR"/>
         <result column="country" property="country" jdbcType="VARCHAR"/>
+        <result column="outDate" property="outDate" jdbcType="BIGINT"/>
+        <result column="validatacode" property="validatacode" jdbcType="VARCHAR"/>
         <result column="power" property="power" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, name, pwd, email, phone, idelete, message, country, power
+    id, name, pwd, email, phone, idelete, message, country, power,outDate,validatacode
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -31,7 +33,7 @@
         select
         <include refid="Base_Column_List"/>
         from admin
-        where name = #{email,jdbcType=VARCHAR}
+        where email = #{email,jdbcType=VARCHAR}
     </select>
 
 
@@ -40,13 +42,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.tomato.entity.Admin">
-    insert into admin (id, name, pwd, 
-      email, phone, idelete, 
-      message, country, power
+    insert into admin ( name, pwd,
+      email
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{idelete,jdbcType=INTEGER}, 
-      #{message,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{power,jdbcType=INTEGER}
+    values ( #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}
       )
   </insert>
     <insert id="insertSelective" parameterType="com.tomato.entity.Admin">
@@ -149,7 +149,9 @@
       idelete = #{idelete,jdbcType=INTEGER},
       message = #{message,jdbcType=VARCHAR},
       country = #{country,jdbcType=VARCHAR},
-      power = #{power,jdbcType=INTEGER}
+      power = #{power,jdbcType=INTEGER},
+      outdate = #{outDate,jdbcType=BIGINT},
+      validatacode = #{validatacode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

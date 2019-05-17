@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tomato.dao.TempdeatilMapper">
+    <resultMap id="BaseResultMap" type="com.tomato.entity.Tempdeatil">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="deviceno" property="deviceno" jdbcType="VARCHAR"/>
+        <result column="othername" property="othername" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="starttime" property="starttime" jdbcType="BIGINT"/>
+        <result column="point" property="point" jdbcType="INTEGER"/>
+        <result column="max" property="max" jdbcType="DECIMAL"/>
+        <result column="min" property="min" jdbcType="DECIMAL"/>
+        <result column="isalarm" property="isalarm" jdbcType="INTEGER"/>
+        <result column="alarmmax" property="alarmmax" jdbcType="DECIMAL"/>
+        <result column="alarmmin" property="alarmmin" jdbcType="DECIMAL"/>
+        <result column="avg" property="avg" jdbcType="DECIMAL"/>
+        <result column="mkt" property="mkt" jdbcType="DECIMAL"/>
+        <result column="stoptime" property="stoptime" jdbcType="BIGINT"/>
+        <result column="readpwd" property="readpwd" jdbcType="VARCHAR"/>
+        <result column="writepwd" property="writepwd" jdbcType="VARCHAR"/>
+        <result column="uploadpwd" property="uploadpwd" jdbcType="VARCHAR"/>
+        <result column="deviceflag" property="deviceflag" jdbcType="VARCHAR"/>
+        <result column="nikename" property="nikename" jdbcType="VARCHAR"/>
+        <result column="uptime" property="uptime" jdbcType="BIGINT"/>
+        <result column="openid" property="openid" jdbcType="VARCHAR"/>
+        <result column="isdelete" property="isdelete" jdbcType="INTEGER"/>
+        <result column="recordinterval" property="recordinterval" jdbcType="INTEGER"/>
+        <result column="recordcycle" property="recordcycle" jdbcType="INTEGER"/>
+        <result column="startmode" property="startmode" jdbcType="VARCHAR"/>
+        <result column="startdelay" property="startdelay" jdbcType="INTEGER"/>
+        <result column="stopmode" property="stopmode" jdbcType="VARCHAR"/>
+        <result column="pn" property="pn" jdbcType="VARCHAR"/>
+        <result column="ver" property="ver" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.tomato.entity.Tempdeatil" extends="BaseResultMap">
+        <result column="temps" property="temps" jdbcType="LONGVARBINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, deviceno, othername, status, starttime, point, max, min, isalarm, alarmmax, alarmmin, 
+    avg, mkt, stoptime, readpwd, writepwd, uploadpwd, deviceflag, nikename, uptime, openid, 
+    isdelete, recordinterval, recordcycle, startmode, startdelay, stopmode, pn, ver
+  </sql>
+    <sql id="Blob_Column_List">
+    temps
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from tempdeatil
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tempdeatil
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.tomato.entity.Tempdeatil">
+    insert into tempdeatil (id, deviceno, othername, 
+      status, starttime, point, 
+      max, min, isalarm, 
+      alarmmax, alarmmin, avg, 
+      mkt, stoptime, readpwd, 
+      writepwd, uploadpwd, deviceflag, 
+      nikename, uptime, openid, 
+      isdelete, recordinterval, recordcycle, 
+      startmode, startdelay, stopmode, 
+      pn, ver, temps
+      )
+    values (#{id,jdbcType=INTEGER}, #{deviceno,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{starttime,jdbcType=BIGINT}, #{point,jdbcType=INTEGER}, 
+      #{max,jdbcType=DECIMAL}, #{min,jdbcType=DECIMAL}, #{isalarm,jdbcType=INTEGER}, 
+      #{alarmmax,jdbcType=DECIMAL}, #{alarmmin,jdbcType=DECIMAL}, #{avg,jdbcType=DECIMAL}, 
+      #{mkt,jdbcType=DECIMAL}, #{stoptime,jdbcType=BIGINT}, #{readpwd,jdbcType=VARCHAR}, 
+      #{writepwd,jdbcType=VARCHAR}, #{uploadpwd,jdbcType=VARCHAR}, #{deviceflag,jdbcType=VARCHAR}, 
+      #{nikename,jdbcType=VARCHAR}, #{uptime,jdbcType=BIGINT}, #{openid,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=INTEGER}, #{recordinterval,jdbcType=INTEGER}, #{recordcycle,jdbcType=INTEGER}, 
+      #{startmode,jdbcType=VARCHAR}, #{startdelay,jdbcType=INTEGER}, #{stopmode,jdbcType=VARCHAR}, 
+      #{pn,jdbcType=VARCHAR}, #{ver,jdbcType=VARCHAR}, #{temps,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.tomato.entity.Tempdeatil">
+        insert into tempdeatil
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="deviceno != null">
+                deviceno,
+            </if>
+            <if test="othername != null">
+                othername,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="starttime != null">
+                starttime,
+            </if>
+            <if test="point != null">
+                point,
+            </if>
+            <if test="max != null">
+                max,
+            </if>
+            <if test="min != null">
+                min,
+            </if>
+            <if test="isalarm != null">
+                isalarm,
+            </if>
+            <if test="alarmmax != null">
+                alarmmax,
+            </if>
+            <if test="alarmmin != null">
+                alarmmin,
+            </if>
+            <if test="avg != null">
+                avg,
+            </if>
+            <if test="mkt != null">
+                mkt,
+            </if>
+            <if test="stoptime != null">
+                stoptime,
+            </if>
+            <if test="readpwd != null">
+                readpwd,
+            </if>
+            <if test="writepwd != null">
+                writepwd,
+            </if>
+            <if test="uploadpwd != null">
+                uploadpwd,
+            </if>
+            <if test="deviceflag != null">
+                deviceflag,
+            </if>
+            <if test="nikename != null">
+                nikename,
+            </if>
+            <if test="uptime != null">
+                uptime,
+            </if>
+            <if test="openid != null">
+                openid,
+            </if>
+            <if test="isdelete != null">
+                isdelete,
+            </if>
+            <if test="recordinterval != null">
+                recordinterval,
+            </if>
+            <if test="recordcycle != null">
+                recordcycle,
+            </if>
+            <if test="startmode != null">
+                startmode,
+            </if>
+            <if test="startdelay != null">
+                startdelay,
+            </if>
+            <if test="stopmode != null">
+                stopmode,
+            </if>
+            <if test="pn != null">
+                pn,
+            </if>
+            <if test="ver != null">
+                ver,
+            </if>
+            <if test="temps != null">
+                temps,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="deviceno != null">
+                #{deviceno,jdbcType=VARCHAR},
+            </if>
+            <if test="othername != null">
+                #{othername,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="starttime != null">
+                #{starttime,jdbcType=BIGINT},
+            </if>
+            <if test="point != null">
+                #{point,jdbcType=INTEGER},
+            </if>
+            <if test="max != null">
+                #{max,jdbcType=DECIMAL},
+            </if>
+            <if test="min != null">
+                #{min,jdbcType=DECIMAL},
+            </if>
+            <if test="isalarm != null">
+                #{isalarm,jdbcType=INTEGER},
+            </if>
+            <if test="alarmmax != null">
+                #{alarmmax,jdbcType=DECIMAL},
+            </if>
+            <if test="alarmmin != null">
+                #{alarmmin,jdbcType=DECIMAL},
+            </if>
+            <if test="avg != null">
+                #{avg,jdbcType=DECIMAL},
+            </if>
+            <if test="mkt != null">
+                #{mkt,jdbcType=DECIMAL},
+            </if>
+            <if test="stoptime != null">
+                #{stoptime,jdbcType=BIGINT},
+            </if>
+            <if test="readpwd != null">
+                #{readpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="writepwd != null">
+                #{writepwd,jdbcType=VARCHAR},
+            </if>
+            <if test="uploadpwd != null">
+                #{uploadpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceflag != null">
+                #{deviceflag,jdbcType=VARCHAR},
+            </if>
+            <if test="nikename != null">
+                #{nikename,jdbcType=VARCHAR},
+            </if>
+            <if test="uptime != null">
+                #{uptime,jdbcType=BIGINT},
+            </if>
+            <if test="openid != null">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="isdelete != null">
+                #{isdelete,jdbcType=INTEGER},
+            </if>
+            <if test="recordinterval != null">
+                #{recordinterval,jdbcType=INTEGER},
+            </if>
+            <if test="recordcycle != null">
+                #{recordcycle,jdbcType=INTEGER},
+            </if>
+            <if test="startmode != null">
+                #{startmode,jdbcType=VARCHAR},
+            </if>
+            <if test="startdelay != null">
+                #{startdelay,jdbcType=INTEGER},
+            </if>
+            <if test="stopmode != null">
+                #{stopmode,jdbcType=VARCHAR},
+            </if>
+            <if test="pn != null">
+                #{pn,jdbcType=VARCHAR},
+            </if>
+            <if test="ver != null">
+                #{ver,jdbcType=VARCHAR},
+            </if>
+            <if test="temps != null">
+                #{temps,jdbcType=LONGVARBINARY},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tomato.entity.Tempdeatil">
+        update tempdeatil
+        <set>
+            <if test="deviceno != null">
+                deviceno = #{deviceno,jdbcType=VARCHAR},
+            </if>
+            <if test="othername != null">
+                othername = #{othername,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="starttime != null">
+                starttime = #{starttime,jdbcType=BIGINT},
+            </if>
+            <if test="point != null">
+                point = #{point,jdbcType=INTEGER},
+            </if>
+            <if test="max != null">
+                max = #{max,jdbcType=DECIMAL},
+            </if>
+            <if test="min != null">
+                min = #{min,jdbcType=DECIMAL},
+            </if>
+            <if test="isalarm != null">
+                isalarm = #{isalarm,jdbcType=INTEGER},
+            </if>
+            <if test="alarmmax != null">
+                alarmmax = #{alarmmax,jdbcType=DECIMAL},
+            </if>
+            <if test="alarmmin != null">
+                alarmmin = #{alarmmin,jdbcType=DECIMAL},
+            </if>
+            <if test="avg != null">
+                avg = #{avg,jdbcType=DECIMAL},
+            </if>
+            <if test="mkt != null">
+                mkt = #{mkt,jdbcType=DECIMAL},
+            </if>
+            <if test="stoptime != null">
+                stoptime = #{stoptime,jdbcType=BIGINT},
+            </if>
+            <if test="readpwd != null">
+                readpwd = #{readpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="writepwd != null">
+                writepwd = #{writepwd,jdbcType=VARCHAR},
+            </if>
+            <if test="uploadpwd != null">
+                uploadpwd = #{uploadpwd,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceflag != null">
+                deviceflag = #{deviceflag,jdbcType=VARCHAR},
+            </if>
+            <if test="nikename != null">
+                nikename = #{nikename,jdbcType=VARCHAR},
+            </if>
+            <if test="uptime != null">
+                uptime = #{uptime,jdbcType=BIGINT},
+            </if>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="isdelete != null">
+                isdelete = #{isdelete,jdbcType=INTEGER},
+            </if>
+            <if test="recordinterval != null">
+                recordinterval = #{recordinterval,jdbcType=INTEGER},
+            </if>
+            <if test="recordcycle != null">
+                recordcycle = #{recordcycle,jdbcType=INTEGER},
+            </if>
+            <if test="startmode != null">
+                startmode = #{startmode,jdbcType=VARCHAR},
+            </if>
+            <if test="startdelay != null">
+                startdelay = #{startdelay,jdbcType=INTEGER},
+            </if>
+            <if test="stopmode != null">
+                stopmode = #{stopmode,jdbcType=VARCHAR},
+            </if>
+            <if test="pn != null">
+                pn = #{pn,jdbcType=VARCHAR},
+            </if>
+            <if test="ver != null">
+                ver = #{ver,jdbcType=VARCHAR},
+            </if>
+            <if test="temps != null">
+                temps = #{temps,jdbcType=LONGVARBINARY},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tomato.entity.Tempdeatil">
+    update tempdeatil
+    set deviceno = #{deviceno,jdbcType=VARCHAR},
+      othername = #{othername,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      starttime = #{starttime,jdbcType=BIGINT},
+      point = #{point,jdbcType=INTEGER},
+      max = #{max,jdbcType=DECIMAL},
+      min = #{min,jdbcType=DECIMAL},
+      isalarm = #{isalarm,jdbcType=INTEGER},
+      alarmmax = #{alarmmax,jdbcType=DECIMAL},
+      alarmmin = #{alarmmin,jdbcType=DECIMAL},
+      avg = #{avg,jdbcType=DECIMAL},
+      mkt = #{mkt,jdbcType=DECIMAL},
+      stoptime = #{stoptime,jdbcType=BIGINT},
+      readpwd = #{readpwd,jdbcType=VARCHAR},
+      writepwd = #{writepwd,jdbcType=VARCHAR},
+      uploadpwd = #{uploadpwd,jdbcType=VARCHAR},
+      deviceflag = #{deviceflag,jdbcType=VARCHAR},
+      nikename = #{nikename,jdbcType=VARCHAR},
+      uptime = #{uptime,jdbcType=BIGINT},
+      openid = #{openid,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      recordinterval = #{recordinterval,jdbcType=INTEGER},
+      recordcycle = #{recordcycle,jdbcType=INTEGER},
+      startmode = #{startmode,jdbcType=VARCHAR},
+      startdelay = #{startdelay,jdbcType=INTEGER},
+      stopmode = #{stopmode,jdbcType=VARCHAR},
+      pn = #{pn,jdbcType=VARCHAR},
+      ver = #{ver,jdbcType=VARCHAR},
+      temps = #{temps,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.tomato.entity.Tempdeatil">
+    update tempdeatil
+    set deviceno = #{deviceno,jdbcType=VARCHAR},
+      othername = #{othername,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      starttime = #{starttime,jdbcType=BIGINT},
+      point = #{point,jdbcType=INTEGER},
+      max = #{max,jdbcType=DECIMAL},
+      min = #{min,jdbcType=DECIMAL},
+      isalarm = #{isalarm,jdbcType=INTEGER},
+      alarmmax = #{alarmmax,jdbcType=DECIMAL},
+      alarmmin = #{alarmmin,jdbcType=DECIMAL},
+      avg = #{avg,jdbcType=DECIMAL},
+      mkt = #{mkt,jdbcType=DECIMAL},
+      stoptime = #{stoptime,jdbcType=BIGINT},
+      readpwd = #{readpwd,jdbcType=VARCHAR},
+      writepwd = #{writepwd,jdbcType=VARCHAR},
+      uploadpwd = #{uploadpwd,jdbcType=VARCHAR},
+      deviceflag = #{deviceflag,jdbcType=VARCHAR},
+      nikename = #{nikename,jdbcType=VARCHAR},
+      uptime = #{uptime,jdbcType=BIGINT},
+      openid = #{openid,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      recordinterval = #{recordinterval,jdbcType=INTEGER},
+      recordcycle = #{recordcycle,jdbcType=INTEGER},
+      startmode = #{startmode,jdbcType=VARCHAR},
+      startdelay = #{startdelay,jdbcType=INTEGER},
+      stopmode = #{stopmode,jdbcType=VARCHAR},
+      pn = #{pn,jdbcType=VARCHAR},
+      ver = #{ver,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -3,16 +3,20 @@ package com.tomato.controller;
 import com.tomato.until.AesCbcUtil;
 import com.tomato.until.HttpRequest;
 import org.activiti.engine.impl.util.json.JSONObject;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/blu")
 public class BluwxController {
+
+  Logger logger = Logger.getLogger(BluwxController.class);
 
   @RequestMapping("/index")
   public String index() {
@@ -20,7 +24,18 @@ public class BluwxController {
     return "index";
   }
 
-  @RequestMapping(params = "decodeUserInfo")
+  @RequestMapping("/uptemps")
+  public String uptemps(List<String> temps) {
+    for (int i = 0; i < temps.size(); i++) {
+      System.out.println(temps.get(i) + "");
+      logger.info(temps.get(i));
+    }
+
+    System.out.println("11111111111111");
+    return "index";
+  }
+
+  @RequestMapping("/decodeUserInfo")
   @ResponseBody
   public Map decodeUserInfo(String encryptedData, String iv, String code) {
 
@@ -34,9 +49,9 @@ public class BluwxController {
     }
 
     // 小程序唯一标识 (在微信小程序管理后台获取)
-    String wxspAppid = "wxd61ae972bca3dce6";
+    String wxspAppid = "wx88bd1bb34f266bcd";
     // 小程序的 app secret (在微信小程序管理后台获取)
-    String wxspSecret = "8871bee8857cb7d997bcdbfb9d0c8438";
+    String wxspSecret = "7932d9b81c1c2b5917d8cce0b2bebbc6";
     // 授权（必填）
     String grant_type = "authorization_code";
 
@@ -54,6 +69,7 @@ public class BluwxController {
             + grant_type;
     // 发送请求
     String sr = HttpRequest.sendGet("https://api.weixin.qq.com/sns/jscode2session", params);
+    logger.info("数据返回:" + sr);
     // 解析相应内容（转换成json对象）
     JSONObject json = new JSONObject(sr);
     // 获取会话密钥（session_key）
@@ -89,6 +105,7 @@ public class BluwxController {
     } catch (Exception e) {
       e.printStackTrace();
     }
+    logger.info(map);
     return map;
   }
 }

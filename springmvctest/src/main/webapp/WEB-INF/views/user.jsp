@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
-    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <title></title>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -212,18 +212,21 @@
                 <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
                         <div class="card-block">
-                            <form class="form-horizontal form-material">
+                            <form action="<c:url value='/admin/updateAdmin' />" method=post
+                                  class="form-horizontal form-material">
                                 <div class="form-group">
                                     <label class="col-md-12">账号名</label>
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="Johnathan Doe"
+                                        <input name="id" value="${admin.id}" hidden>
+                                        <input type="text" name="name" placeholder="${admin.name}" value="${admin.name}"
                                                class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-email" class="col-md-12">邮箱</label>
                                     <div class="col-md-12">
-                                        <input type="email" placeholder="johnathan@admin.com"
+                                        <input type="email" name="email" placeholder="${admin.email}"
+                                               value="${admin.email}"
                                                class="form-control form-control-line" name="example-email"
                                                id="example-email">
                                     </div>
@@ -231,34 +234,36 @@
                                 <div class="form-group">
                                     <label class="col-md-12">密码</label>
                                     <div class="col-md-12">
-                                        <input type="password" value="password" class="form-control form-control-line">
+                                        <input type="password" name="pwd" class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">电话</label>
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="123 456 7890"
+                                        <input type="text" name="phone" placeholder="${admin.phone}"
+                                               value="${admin.phone}"
                                                class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">信息</label>
                                     <div class="col-md-12">
-                                        <textarea rows="5" class="form-control form-control-line"></textarea>
+                                        <textarea rows="5" name="message"
+                                                  class="form-control form-control-line">${message}</textarea>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-12">国家</label>
-                                    <div class="col-sm-12">
-                                        <select class="form-control form-control-line">
-                                            <option>London</option>
-                                            <option>India</option>
-                                            <option>Usa</option>
-                                            <option>Canada</option>
-                                            <option>Thailand</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <%--<div class="form-group">--%>
+                                <%--<label class="col-sm-12">国家</label>--%>
+                                <%--<div class="col-sm-12">--%>
+                                <%--<select class="form-control form-control-line">--%>
+                                <%--<option>London</option>--%>
+                                <%--<option>India</option>--%>
+                                <%--<option>Usa</option>--%>
+                                <%--<option>Canada</option>--%>
+                                <%--<option>Thailand</option>--%>
+                                <%--</select>--%>
+                                <%--</div>--%>
+                                <%--</div>--%>
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <button class="btn btn-success">更新</button>
@@ -282,6 +287,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
+            Copyright © 2019 四川红番茄科技有限公司 版权所有|蜀ICP备17041385号-2
             <%--© 2017 Monster Admin by wrappixel.More Templates <a href="http://www.cssmoban.com/" target="_blank"--%>
             <%--title="模板之家">模板之家</a> - Collect from <a--%>
             <%--href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>--%>
