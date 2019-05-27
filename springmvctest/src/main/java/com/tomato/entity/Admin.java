@@ -23,6 +23,16 @@ public class Admin {
 
   private String validatacode;
 
+  private String deviceflag;
+
+  public String getDeviceflag() {
+    return deviceflag;
+  }
+
+  public void setDeviceflag(String deviceflag) {
+    this.deviceflag = deviceflag;
+  }
+
   public Long getOutDate() {
     return outDate;
   }

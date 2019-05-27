@@ -3,6 +3,7 @@
 <head>
     <%@ page language="java" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +15,8 @@
     <title></title>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-table.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
@@ -82,8 +85,8 @@
                                             href="javascript:void(0)"><i class="ti-menu"></i></a></li>
                     <li class="nav-item hidden-sm-down">
                         <form class="app-search p-l-20">
-                            <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i
-                                class="ti-search"></i></a>
+                            <%--<input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i--%>
+                            <%--class="ti-search"></i></a>--%>
                         </form>
                     </li>
                 </ul>
@@ -92,7 +95,15 @@
                 <!-- ============================================================== -->
                 <ul class="navbar-nav my-lg-0">
                     <li class="nav-item dropdown">
-                        <%--<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>--%>
+                        <%--Markarn Doe--%>
+                        ${adminname}
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="/admin/logout"
+                        <%--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"--%>
+                        >
+                            [注销]
+                            <%--<img--%>
+                            <%--src="/assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5"/>--%>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -162,42 +173,88 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <!-- Row -->
-            <%--<div class="row">--%>
-            <%--<!-- Column -->--%>
-            <%--<div class="col-sm-6">--%>
-            <%--<div class="card">--%>
-            <%--<div class="card-block">--%>
-            <%--<h4 class="card-title">Daily Sales</h4>--%>
-            <%--<div class="text-right">--%>
-            <%--<h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> $120</h2>--%>
-            <%--<span class="text-muted">Todays Income</span>--%>
-            <%--</div>--%>
-            <%--<span class="text-success">80%</span>--%>
-            <%--<div class="progress">--%>
-            <%--<div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--<!-- Column -->--%>
-            <%--<!-- Column -->--%>
-            <%--<div class="col-sm-6">--%>
-            <%--<div class="card">--%>
-            <%--<div class="card-block">--%>
-            <%--<h4 class="card-title">Weekly Sales</h4>--%>
-            <%--<div class="text-right">--%>
-            <%--<h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>--%>
-            <%--<span class="text-muted">Todays Income</span>--%>
-            <%--</div>--%>
-            <%--<span class="text-info">30%</span>--%>
-            <%--<div class="progress">--%>
-            <%--<div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--<!-- Column -->--%>
-            <%--</div>--%>
+            <div class="row">
+                <!-- Column -->
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">配置信息</h4>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div>序列号：${tempdeatil.deviceno}</div>
+                                    <div>PN：${tempdeatil.pn}</div>
+                                    <div>VER：${tempdeatil.ver}</div>
+                                    <div>启动模式：${startmode}</div>
+                                    <div>&nbsp;</div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div>启动延时： <fmt:formatNumber value="${tempdeatil.startdelay/60}"
+                                    />分
+                                    </div>
+                                    <div>记录周期：${recordcycle}</div>
+                                    <div>记录间隔： <fmt:formatNumber value="${tempdeatil.recordinterval/60}"
+                                    /> 分
+                                    </div>
+                                </div>
+                            </div>
+
+                            <%--<div class="text-right">--%>
+                            <%--<h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> $120</h2>--%>
+                            <%--<span class="text-muted">Todays Income</span>--%>
+                            <%--</div>--%>
+                            <%--<span class="text-success">80%</span>--%>
+                            <%--<div class="progress">--%>
+                            <%--<div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;"--%>
+                            <%--aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
+                            <%--</div>--%>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">记录概要</h4>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div>启动时间：${starttime}</div>
+                                    <div>停止时间：${stoptime}</div>
+                                    <div>停止模式：${startmode}</div>
+                                    <div>记录时长：${tempdeatil.logTime}</div>
+                                    <div>数据点：${tempdeatil.point}</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div>最高：<fmt:formatNumber value="${tempdeatil.max}" pattern="#.#"
+                                                              type="number"/>℃
+                                    </div>
+                                    <div>最低：<fmt:formatNumber value="${tempdeatil.min}" pattern="#.#"
+                                                              type="number"/>℃
+                                    </div>
+                                    <div>平均：<fmt:formatNumber value="${tempdeatil.avg}" pattern="#.#"
+                                                              type="number"/>℃
+                                    </div>
+                                    <div>MKT：<fmt:formatNumber value="${tempdeatil.mkt}" pattern="#.#"
+                                                               type="number"/>℃
+                                    </div>
+                                </div>
+                            </div>
+                            <%--<div class="text-right">--%>
+                            <%--<h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>--%>
+                            <%--<span class="text-muted">Todays Income</span>--%>
+                            <%--</div>--%>
+                            <%--<span class="text-info">30%</span>--%>
+                            <%--<div class="progress">--%>
+                            <%--<div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;"--%>
+                            <%--aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
+                            <%--</div>--%>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
             <!-- Row -->
             <!-- Row -->
             <div class="row">
@@ -205,7 +262,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-block">
-                            <h4 class="card-title">Revenue Statistics</h4>
+                            <h4 class="card-title">单位【℃】</h4>
                             <div class="flot-chart">
                                 <div class="flot-chart-content" id="flot-line-chart"></div>
                             </div>
@@ -227,192 +284,11 @@
                             <%--<option value="3">April</option>--%>
                             <%--</select>--%>
                             <%--<h4 class="card-title">Projects of the Month</h4>--%>
-                            <div class="table-responsive m-t-40 templist">
-                                <table class="table stylish-table" style="width: 25%;">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>温度值℃</th>
-                                        <th>时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <table class="table stylish-table" style="width: 25%;">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>温度值℃</th>
-                                        <th>时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <table class="table stylish-table" style="width: 25%;">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>温度值℃</th>
-                                        <th>时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <table class="table stylish-table" style="width: 25%;">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>温度值℃</th>
-                                        <th>时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            25.6
-                                        </td>
-                                        <td>2019/5/5 16:03</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table id="mytable" class="table stylish-table">
+                            </table>
+                            <%--<div class="table-responsive m-t-40 templist">--%>
+                            <%----%>
+                            <%--</div>--%>
                         </div>
                     </div>
                 </div>
@@ -511,12 +387,196 @@
 <!-- ============================================================== -->
 <!-- Flot Charts JavaScript -->
 <script src="/assets/plugins/flot/jquery.flot.js"></script>
-<script src="/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="/assets/plugins/flot/jquery.flot.axislabels.js"></script>
+<script src="/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.js"></script>
 <script src="/js/flot-data.js"></script>
 <!-- ============================================================== -->
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+<script src="/js/bootstrap-table.js"></script>
+<script src="/js/bootstrap-table-zh-CN.js"></script>
 </body>
 
+<script>
+    function init() {
+        $('#mytable').bootstrapTable({
+            url: '<c:url  value="/tempdetail/templist?id=${tempdeatil.id}" />',
+            pageNumber: 1, //初始化加载第一页
+            pagination: true,//是否分页
+            sidePagination: 'client',//server:服务器端分页|client：前端分页
+            pageSize: 10,//单页记录数
+            pageList: [10],//可选择单页记录数
+            showRefresh: false,//刷新按钮
+            queryParams: function (params) {//上传服务器的参数
+                var temp = {//如果是在服务器端实现分页，limit、offset这两个参数是必须的
+                    limit: params.limit, // 每页显示数量
+                    offset: params.offset, // SQL语句起始索引
+                    //page : (params.offset / params.limit) + 1, //当前页码
+                };
+                return temp;
+            }
+            ,
+            toolbar: "#toolbar",
+            paginationDetailHAlign: ' hidden',
+            // sidePagination: "true",
+            striped: true, // 是否显示行间隔色
+            //search : "true",
+            uniqueId: "ID",
+            // pageSize: "5",
+            // pagination: true, // 是否分页
+            sortable: false, // 是否启用排序
+            columns: [
+                {
+                    field: 'id1',
+                    title: '#'
+                },
+                {
+                    field: 'time1',
+                    title: '时间'
+                },
+                {
+                    field: 'temp1',
+                    title: '温度'
+                },
+                {
+                    field: 'id2',
+                    title: '#'
+                },
+                {
+                    field: 'time2',
+                    title: '时间'
+                },
+                {
+                    field: 'temp2',
+                    title: '温度'
+                },
+                {
+                    field: 'id3',
+                    title: '#'
+                },
+                {
+                    field: 'time3',
+                    title: '时间'
+                },
+                {
+                    field: 'temp3',
+                    title: '温度'
+                },
+                {
+                    field: 'id4',
+                    title: '#'
+                },
+                {
+                    field: 'time4',
+                    title: '时间'
+                },
+                {
+                    field: 'temp4',
+                    title: '温度'
+                },
+
+
+            ]
+        });
+    }
+
+    $(document).ready(function () {
+        init();
+        // $('#mytable').bootStrapTable('refresh');
+        console.log("document ready");
+        var offset = 0;
+        plot();
+
+        function plot() {
+            // console.log();
+            let lm = [];
+            let temps = ${tempdeatil.templist};
+            var sin = [];
+            let arr = [];
+
+            <c:forEach items="${lm}" var="item" varStatus="status" >
+            sin.push([${status.count}, ${item.temp}, '${item.time}']);
+            arr.push([${status.count}, '${item.time}']);
+            </c:forEach>
+
+
+            var options = {
+                series: {
+                    lines: {
+                        show: true
+                    },
+                    points: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true //IMPORTANT! this is needed for tooltip to work
+                },
+                yaxis: {
+                    min: ${tempdeatil.min}-5,
+                    max: ${tempdeatil.max}+5
+                },
+                colors: ["#009efb", "#55ce63"],
+                grid: {
+                    color: "#AFAFAF",
+                    hoverable: true,
+                    borderWidth: 0,
+                    backgroundColor: '#FFF'
+                },
+                xaxis: {
+                    ticks: x_label(arr, 6),
+
+                },
+                axisLabels: {
+                    show: true
+                },
+                xaxes: [{
+                    axisLabel: '',
+                }],
+                yaxes: [{
+                    position: 'left',
+                    axisLabel: '',
+                }, {
+                    position: 'right',
+                    axisLabel: 'bleem'
+                }],
+                tooltip: true,
+                tooltipOpts: {
+                    content: "   温度： %y.1 ℃",
+                    shifts: {
+                        x: -60,
+                        y: 25
+                    }
+                }
+            };
+            var plotObj = $.plot($("#flot-line-chart"), [{
+                data: sin
+                // label: "sin(x)",
+            }], options);
+        }
+
+    });
+
+    function x_label(data, max) {
+        let label = [];
+        if (data.length > max) {
+            let end = data.length - 1,
+                index = 0;
+            $.each(data, function (i, k) {
+                if (Math.floor(i / (end / max)) == index) {
+                    // console.log(i + "he  " + k);
+                    label.push([i, k[1]]);
+                    index++;
+                }
+
+            });
+        } else {
+            return data;
+        }
+        return label;
+    }
+
+
+</script>
 </html>

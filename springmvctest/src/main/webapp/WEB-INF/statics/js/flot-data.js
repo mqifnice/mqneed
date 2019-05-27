@@ -28,9 +28,10 @@ function getRandomData() {
     }
     return res;
 }
+
 // Set up the control widget
 var updateInterval = 30;
-$("#updateInterval").val(updateInterval).change(function() {
+$("#updateInterval").val(updateInterval).change(function () {
     var v = $(this).val();
     if (v && !isNaN(+v)) {
         updateInterval = +v;
@@ -73,58 +74,10 @@ function update() {
     plot.draw();
     setTimeout(update, updateInterval);
 }
+
 update();
 //Flot Line Chart
-$(document).ready(function() {
-    console.log("document ready");
-    var offset = 0;
-    plot();
+$(document).ready(function () {
 
-    function plot() {
-        var sin = [],
-            cos = [];
-        for (var i = 0; i < 12000; i += 0.2) {
-            sin.push([i, 0.5]);
-            // cos.push([i, Math.cos(i + offset)]);
-        }
-        var options = {
-            series: {
-                lines: {
-                    show: true
-                },
-                // points: {
-                //     show: true
-                // }
-            },
-            grid: {
-                hoverable: true //IMPORTANT! this is needed for tooltip to work
-            },
-            yaxis: {
-                min: -1.2,
-                max: 1.2
-            },
-            colors: ["#009efb", "#55ce63"],
-            grid: {
-                color: "#AFAFAF",
-                hoverable: true,
-                borderWidth: 0,
-                backgroundColor: '#FFF'
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: "'%s' of %x.1 is %y.4",
-                shifts: {
-                    x: -60,
-                    y: 25
-                }
-            }
-        };
-        var plotObj = $.plot($("#flot-line-chart"), [{
-            data: sin,
-            label: "sin(x)",
-        }, {
-            data: cos,
-            label: "cos(x)"
-        }], options);
-    }
+
 });

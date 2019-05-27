@@ -23,6 +23,7 @@ var Auth = {
             Auth.vars.lowin_login.style.display = 'none';
         }, 500);
         Auth.vars.lowin_register.style.display = 'block';
+
         Auth.vars.lowin_register.className += ' lowin-animated-flip';
 
         Auth.setHeight(Auth.vars.lowin_register.offsetHeight + Auth.vars.lowin_footer.offsetHeight);
@@ -57,6 +58,8 @@ var Auth = {
             Auth.vars.login_back_link.style.opacity = 1;
             Auth.vars.password_group.style.height = 0;
             Auth.vars.password_group.style.margin = 0;
+            Auth.vars.password_group.style.visibility = 'hidden';
+
         }, 100);
 
         Auth.vars.login_btn.innerText = 'Forgot Password';
@@ -71,14 +74,17 @@ var Auth = {
         Auth.vars.password_group.classList += ' lowin-animated-back';
         Auth.vars.password_group.style.display = 'block';
 
+
         setTimeout(function () {
             Auth.vars.login_back_link.style.opacity = 0;
             Auth.vars.password_group.style.height = Auth.vars.password_group_height + 'px';
             Auth.vars.password_group.style.marginBottom = 30 + 'px';
+            Auth.vars.password_group.style.visibility = 'visible';
         }, 100);
 
         setTimeout(function () {
             Auth.vars.login_back_link.style.display = 'none';
+
             Auth.vars.password_group.classList.remove('lowin-animated-back');
         }, 1000);
 
@@ -133,6 +139,6 @@ var Auth = {
         Auth.vars.login_back_link.addEventListener("click", function (e) {
             Auth.loginback(e);
         });
-       
+
     }
 }

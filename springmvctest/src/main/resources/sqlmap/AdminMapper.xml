@@ -12,10 +12,11 @@
         <result column="country" property="country" jdbcType="VARCHAR"/>
         <result column="outDate" property="outDate" jdbcType="BIGINT"/>
         <result column="validatacode" property="validatacode" jdbcType="VARCHAR"/>
+        <result column="deviceflag" property="deviceflag" jdbcType="VARCHAR"/>
         <result column="power" property="power" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, name, pwd, email, phone, idelete, message, country, power,outDate,validatacode
+    id, name, pwd, email, phone, idelete, message, country, power,outDate,validatacode,deviceflag
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -151,7 +152,8 @@
       country = #{country,jdbcType=VARCHAR},
       power = #{power,jdbcType=INTEGER},
       outdate = #{outDate,jdbcType=BIGINT},
-      validatacode = #{validatacode,jdbcType=VARCHAR}
+      validatacode = #{validatacode,jdbcType=VARCHAR},
+      deviceflag = #{deviceflag,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

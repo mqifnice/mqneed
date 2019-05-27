@@ -36,22 +36,22 @@
         <div class="lowin-box lowin-login">
             <div class="lowin-box-inner">
                 <form method=post>
-                    <p>Sign in to continue</p>
+                    <p></p>
                     <div class="lowin-group">
-                        <label>Email <a href="#" class="login-back-link">Sign in?</a></label>
+                        <label>邮箱 <a href="#" class="login-back-link">登录</a></label>
                         <input type="email" autocomplete="email" name="email" class="lowin-input" required="required">
                     </div>
                     <div class="lowin-group password-group">
-                        <label>Password <a href="#" class="forgot-link">Forgot Password?</a></label>
+                        <label>密码 <a href="#" class="forgot-link">忘记密码?</a></label>
                         <input type="password" name="password" autocomplete="current-password" class="lowin-input"
                                id="pwd" required="required">
                     </div>
                     <button class="lowin-btn login-btn">
-                        Sign In
+                        登录
                     </button>
 
                     <div class="text-foot">
-                        Don't have an account? <a href="" class="register-link">Register</a>
+                        <a href="" class="register-link">立即注册</a>
                     </div>
                 </form>
             </div>
@@ -60,27 +60,27 @@
         <div class="lowin-box lowin-register">
             <div class="lowin-box-inner">
                 <form method=post>
-                    <p>Let's create your account</p>
+                    <p></p>
                     <div class="lowin-group">
-                        <label>Name</label>
+                        <label>昵称</label>
                         <input type="text" name="name" autocomplete="name" class="lowin-input" required="required">
                     </div>
                     <div class="lowin-group">
-                        <label>Email</label>
+                        <label>邮箱</label>
                         <input type="email" autocomplete="email" name="email" class="lowin-input"
                                required="required">
                     </div>
                     <div class="lowin-group">
-                        <label>Password</label>
+                        <label>密码</label>
                         <input type="password" name="password" autocomplete="current-password" class="lowin-input"
                                required="required">
                     </div>
                     <button class="lowin-btn">
-                        Sign Up
+                        注册
                     </button>
 
                     <div class="text-foot">
-                        Already have an account? <a href="" class="login-link">Login</a>
+                        已有账号? <a href="" class="login-link">登录</a>
                     </div>
                 </form>
             </div>

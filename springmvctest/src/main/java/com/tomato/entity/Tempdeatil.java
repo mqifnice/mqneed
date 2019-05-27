@@ -1,9 +1,13 @@
 package com.tomato.entity;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 public class Tempdeatil {
   private Integer id;
 
   private String deviceno;
+  private String deviceid;
 
   private String othername;
 
@@ -13,19 +17,19 @@ public class Tempdeatil {
 
   private Integer point;
 
-  private Long max;
+  private BigDecimal max;
 
-  private Long min;
+  private BigDecimal min;
 
   private Integer isalarm;
 
-  private Long alarmmax;
+  private BigDecimal alarmmax;
 
-  private Long alarmmin;
+  private BigDecimal alarmmin;
 
-  private Long avg;
+  private BigDecimal avg;
 
-  private Long mkt;
+  private BigDecimal mkt;
 
   private Long stoptime;
 
@@ -37,7 +41,7 @@ public class Tempdeatil {
 
   private String deviceflag;
 
-  private String nikename;
+  private String nickname;
 
   private Long uptime;
 
@@ -56,8 +60,79 @@ public class Tempdeatil {
   private String stopmode;
 
   private String pn;
+  private String logTime;
+
+  public String getLogTime() {
+    return logTime;
+  }
+
+  public void setLogTime(String logTime) {
+    this.logTime = logTime;
+  }
+
+  public String getDeviceid() {
+    return deviceid;
+  }
+
+  public void setDeviceid(String deviceid) {
+    this.deviceid = deviceid;
+  }
+
+  public BigDecimal getMax() {
+    return max;
+  }
+
+  public void setMax(BigDecimal max) {
+    this.max = max;
+  }
+
+  public BigDecimal getMin() {
+    return min;
+  }
+
+  public void setMin(BigDecimal min) {
+    this.min = min;
+  }
+
+  public void setIsalarm(Integer isalarm) {
+    this.isalarm = isalarm;
+  }
+
+  public BigDecimal getAlarmmax() {
+    return alarmmax;
+  }
+
+  public void setAlarmmax(BigDecimal alarmmax) {
+    this.alarmmax = alarmmax;
+  }
+
+  public BigDecimal getAlarmmin() {
+    return alarmmin;
+  }
+
+  public void setAlarmmin(BigDecimal alarmmin) {
+    this.alarmmin = alarmmin;
+  }
+
+  public BigDecimal getAvg() {
+    return avg;
+  }
+
+  public void setAvg(BigDecimal avg) {
+    this.avg = avg;
+  }
+
+  public BigDecimal getMkt() {
+    return mkt;
+  }
+
+  public void setMkt(BigDecimal mkt) {
+    this.mkt = mkt;
+  }
 
   private String ver;
+
+  private List<String> templist;
 
   private byte[] temps;
 
@@ -109,60 +184,8 @@ public class Tempdeatil {
     this.point = point;
   }
 
-  public Long getMax() {
-    return max;
-  }
-
-  public void setMax(Long max) {
-    this.max = max;
-  }
-
-  public Long getMin() {
-    return min;
-  }
-
-  public void setMin(Long min) {
-    this.min = min;
-  }
-
   public Integer getIsalarm() {
     return isalarm;
-  }
-
-  public void setIsalarm(Integer isalarm) {
-    this.isalarm = isalarm;
-  }
-
-  public Long getAlarmmax() {
-    return alarmmax;
-  }
-
-  public void setAlarmmax(Long alarmmax) {
-    this.alarmmax = alarmmax;
-  }
-
-  public Long getAlarmmin() {
-    return alarmmin;
-  }
-
-  public void setAlarmmin(Long alarmmin) {
-    this.alarmmin = alarmmin;
-  }
-
-  public Long getAvg() {
-    return avg;
-  }
-
-  public void setAvg(Long avg) {
-    this.avg = avg;
-  }
-
-  public Long getMkt() {
-    return mkt;
-  }
-
-  public void setMkt(Long mkt) {
-    this.mkt = mkt;
   }
 
   public Long getStoptime() {
@@ -205,12 +228,12 @@ public class Tempdeatil {
     this.deviceflag = deviceflag;
   }
 
-  public String getNikename() {
-    return nikename;
+  public String getNickname() {
+    return nickname;
   }
 
-  public void setNikename(String nikename) {
-    this.nikename = nikename;
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
   }
 
   public Long getUptime() {
@@ -299,5 +322,13 @@ public class Tempdeatil {
 
   public void setTemps(byte[] temps) {
     this.temps = temps;
+  }
+
+  public List<String> getTemplist() {
+    return templist;
+  }
+
+  public void setTemplist(List<String> templist) {
+    this.templist = templist;
   }
 }

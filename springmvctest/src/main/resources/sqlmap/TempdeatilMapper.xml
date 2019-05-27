@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.tomato.entity.Tempdeatil">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="deviceno" property="deviceno" jdbcType="VARCHAR"/>
+        <result column="deviceid" property="deviceid" jdbcType="VARCHAR"/>
         <result column="othername" property="othername" jdbcType="VARCHAR"/>
         <result column="status" property="status" jdbcType="INTEGER"/>
         <result column="starttime" property="starttime" jdbcType="BIGINT"/>
@@ -20,7 +21,7 @@
         <result column="writepwd" property="writepwd" jdbcType="VARCHAR"/>
         <result column="uploadpwd" property="uploadpwd" jdbcType="VARCHAR"/>
         <result column="deviceflag" property="deviceflag" jdbcType="VARCHAR"/>
-        <result column="nikename" property="nikename" jdbcType="VARCHAR"/>
+        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
         <result column="uptime" property="uptime" jdbcType="BIGINT"/>
         <result column="openid" property="openid" jdbcType="VARCHAR"/>
         <result column="isdelete" property="isdelete" jdbcType="INTEGER"/>
@@ -36,8 +37,8 @@
         <result column="temps" property="temps" jdbcType="LONGVARBINARY"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, deviceno, othername, status, starttime, point, max, min, isalarm, alarmmax, alarmmin, 
-    avg, mkt, stoptime, readpwd, writepwd, uploadpwd, deviceflag, nikename, uptime, openid, 
+    id, deviceno,deviceid, othername, status, starttime, point, max, min, isalarm, alarmmax, alarmmin,
+    avg, mkt, stoptime, readpwd, writepwd, uploadpwd, deviceflag, nickname, uptime, openid,
     isdelete, recordinterval, recordcycle, startmode, startdelay, stopmode, pn, ver
   </sql>
     <sql id="Blob_Column_List">
@@ -51,29 +52,57 @@
         from tempdeatil
         where id = #{id,jdbcType=INTEGER}
     </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tempdeatil
+
+    </select>
+    <select id="selectAllByFlag" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from tempdeatil
+        where deviceflag = #{deviceflag,jdbcType=VARCHAR} and isdelete=0 order by id desc
+
+    </select>
+    <select id="selectByDeviceId" resultMap="ResultMapWithBLOBs" parameterType="com.tomato.entity.Tempdeatil">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from tempdeatil
+        where deviceid = #{deviceid,jdbcType=VARCHAR} and starttime= #{starttime,jdbcType=BIGINT}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tempdeatil
     where id = #{id,jdbcType=INTEGER}
-  </delete>
+    </delete>
+    <update id="deleteTempById" parameterType="java.lang.Integer">
+        update tempdeatil
+        <set>
+            isdelete =1
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <insert id="insert" parameterType="com.tomato.entity.Tempdeatil">
-    insert into tempdeatil (id, deviceno, othername, 
+    insert into tempdeatil (id, deviceno, deviceid,othername,
       status, starttime, point, 
       max, min, isalarm, 
       alarmmax, alarmmin, avg, 
       mkt, stoptime, readpwd, 
       writepwd, uploadpwd, deviceflag, 
-      nikename, uptime, openid, 
+      nickname, uptime, openid,
       isdelete, recordinterval, recordcycle, 
       startmode, startdelay, stopmode, 
       pn, ver, temps
       )
-    values (#{id,jdbcType=INTEGER}, #{deviceno,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{deviceno,jdbcType=VARCHAR},#{deviceid,jdbcType=VARCHAR}, #{othername,jdbcType=VARCHAR},
       #{status,jdbcType=INTEGER}, #{starttime,jdbcType=BIGINT}, #{point,jdbcType=INTEGER}, 
       #{max,jdbcType=DECIMAL}, #{min,jdbcType=DECIMAL}, #{isalarm,jdbcType=INTEGER}, 
       #{alarmmax,jdbcType=DECIMAL}, #{alarmmin,jdbcType=DECIMAL}, #{avg,jdbcType=DECIMAL}, 
       #{mkt,jdbcType=DECIMAL}, #{stoptime,jdbcType=BIGINT}, #{readpwd,jdbcType=VARCHAR}, 
       #{writepwd,jdbcType=VARCHAR}, #{uploadpwd,jdbcType=VARCHAR}, #{deviceflag,jdbcType=VARCHAR}, 
-      #{nikename,jdbcType=VARCHAR}, #{uptime,jdbcType=BIGINT}, #{openid,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{uptime,jdbcType=BIGINT}, #{openid,jdbcType=VARCHAR},
       #{isdelete,jdbcType=INTEGER}, #{recordinterval,jdbcType=INTEGER}, #{recordcycle,jdbcType=INTEGER}, 
       #{startmode,jdbcType=VARCHAR}, #{startdelay,jdbcType=INTEGER}, #{stopmode,jdbcType=VARCHAR}, 
       #{pn,jdbcType=VARCHAR}, #{ver,jdbcType=VARCHAR}, #{temps,jdbcType=LONGVARBINARY}
@@ -87,6 +116,9 @@
             </if>
             <if test="deviceno != null">
                 deviceno,
+            </if>
+            <if test="deviceid != null">
+                deviceid,
             </if>
             <if test="othername != null">
                 othername,
@@ -136,8 +168,8 @@
             <if test="deviceflag != null">
                 deviceflag,
             </if>
-            <if test="nikename != null">
-                nikename,
+            <if test="nickname != null">
+                nickname,
             </if>
             <if test="uptime != null">
                 uptime,
@@ -170,7 +202,7 @@
                 ver,
             </if>
             <if test="temps != null">
-                temps,
+                temps
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -179,6 +211,9 @@
             </if>
             <if test="deviceno != null">
                 #{deviceno,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceid != null">
+                #{deviceid,jdbcType=VARCHAR},
             </if>
             <if test="othername != null">
                 #{othername,jdbcType=VARCHAR},
@@ -228,8 +263,8 @@
             <if test="deviceflag != null">
                 #{deviceflag,jdbcType=VARCHAR},
             </if>
-            <if test="nikename != null">
-                #{nikename,jdbcType=VARCHAR},
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
             </if>
             <if test="uptime != null">
                 #{uptime,jdbcType=BIGINT},
@@ -262,15 +297,20 @@
                 #{ver,jdbcType=VARCHAR},
             </if>
             <if test="temps != null">
-                #{temps,jdbcType=LONGVARBINARY},
+                #{temps,jdbcType=LONGVARBINARY}
             </if>
         </trim>
     </insert>
+
+
     <update id="updateByPrimaryKeySelective" parameterType="com.tomato.entity.Tempdeatil">
         update tempdeatil
         <set>
             <if test="deviceno != null">
                 deviceno = #{deviceno,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceid != null">
+                deviceid = #{deviceid,jdbcType=VARCHAR},
             </if>
             <if test="othername != null">
                 othername = #{othername,jdbcType=VARCHAR},
@@ -320,8 +360,8 @@
             <if test="deviceflag != null">
                 deviceflag = #{deviceflag,jdbcType=VARCHAR},
             </if>
-            <if test="nikename != null">
-                nikename = #{nikename,jdbcType=VARCHAR},
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
             </if>
             <if test="uptime != null">
                 uptime = #{uptime,jdbcType=BIGINT},
@@ -354,14 +394,16 @@
                 ver = #{ver,jdbcType=VARCHAR},
             </if>
             <if test="temps != null">
-                temps = #{temps,jdbcType=LONGVARBINARY},
+                temps = #{temps,jdbcType=LONGVARBINARY}
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tomato.entity.Tempdeatil">
     update tempdeatil
-    set deviceno = #{deviceno,jdbcType=VARCHAR},
+    set
+     deviceno = #{deviceno,jdbcType=VARCHAR},
+     deviceid = #{deviceid,jdbcType=VARCHAR},
       othername = #{othername,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       starttime = #{starttime,jdbcType=BIGINT},
@@ -378,7 +420,7 @@
       writepwd = #{writepwd,jdbcType=VARCHAR},
       uploadpwd = #{uploadpwd,jdbcType=VARCHAR},
       deviceflag = #{deviceflag,jdbcType=VARCHAR},
-      nikename = #{nikename,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
       uptime = #{uptime,jdbcType=BIGINT},
       openid = #{openid,jdbcType=VARCHAR},
       isdelete = #{isdelete,jdbcType=INTEGER},
@@ -393,35 +435,41 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
     <update id="updateByPrimaryKey" parameterType="com.tomato.entity.Tempdeatil">
-    update tempdeatil
-    set deviceno = #{deviceno,jdbcType=VARCHAR},
-      othername = #{othername,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      starttime = #{starttime,jdbcType=BIGINT},
-      point = #{point,jdbcType=INTEGER},
-      max = #{max,jdbcType=DECIMAL},
-      min = #{min,jdbcType=DECIMAL},
-      isalarm = #{isalarm,jdbcType=INTEGER},
-      alarmmax = #{alarmmax,jdbcType=DECIMAL},
-      alarmmin = #{alarmmin,jdbcType=DECIMAL},
-      avg = #{avg,jdbcType=DECIMAL},
-      mkt = #{mkt,jdbcType=DECIMAL},
-      stoptime = #{stoptime,jdbcType=BIGINT},
-      readpwd = #{readpwd,jdbcType=VARCHAR},
-      writepwd = #{writepwd,jdbcType=VARCHAR},
-      uploadpwd = #{uploadpwd,jdbcType=VARCHAR},
-      deviceflag = #{deviceflag,jdbcType=VARCHAR},
-      nikename = #{nikename,jdbcType=VARCHAR},
-      uptime = #{uptime,jdbcType=BIGINT},
-      openid = #{openid,jdbcType=VARCHAR},
-      isdelete = #{isdelete,jdbcType=INTEGER},
-      recordinterval = #{recordinterval,jdbcType=INTEGER},
-      recordcycle = #{recordcycle,jdbcType=INTEGER},
-      startmode = #{startmode,jdbcType=VARCHAR},
-      startdelay = #{startdelay,jdbcType=INTEGER},
-      stopmode = #{stopmode,jdbcType=VARCHAR},
-      pn = #{pn,jdbcType=VARCHAR},
-      ver = #{ver,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update tempdeatil
+        set
+        deviceno = #{deviceno,jdbcType=VARCHAR},
+        deviceid = #{deviceid,jdbcType=VARCHAR},
+        othername = #{othername,jdbcType=VARCHAR},
+        status = #{status,jdbcType=INTEGER},
+        starttime = #{starttime,jdbcType=BIGINT},
+        point = #{point,jdbcType=INTEGER},
+        max = #{max,jdbcType=DECIMAL},
+        min = #{min,jdbcType=DECIMAL},
+        isalarm = #{isalarm,jdbcType=INTEGER},
+        alarmmax = #{alarmmax,jdbcType=DECIMAL},
+        alarmmin = #{alarmmin,jdbcType=DECIMAL},
+        avg = #{avg,jdbcType=DECIMAL},
+        mkt = #{mkt,jdbcType=DECIMAL},
+        stoptime = #{stoptime,jdbcType=BIGINT},
+        readpwd = #{readpwd,jdbcType=VARCHAR},
+        writepwd = #{writepwd,jdbcType=VARCHAR},
+        uploadpwd = #{uploadpwd,jdbcType=VARCHAR},
+        deviceflag = #{deviceflag,jdbcType=VARCHAR},
+        nickname = #{nickname,jdbcType=VARCHAR},
+        uptime = #{uptime,jdbcType=BIGINT},
+        openid = #{openid,jdbcType=VARCHAR},
+        isdelete = #{isdelete,jdbcType=INTEGER},
+        recordinterval = #{recordinterval,jdbcType=INTEGER},
+        recordcycle = #{recordcycle,jdbcType=INTEGER},
+        startmode = #{startmode,jdbcType=VARCHAR},
+        startdelay = #{startdelay,jdbcType=INTEGER},
+        stopmode = #{stopmode,jdbcType=VARCHAR},
+        pn = #{pn,jdbcType=VARCHAR},
+        ver = #{ver,jdbcType=VARCHAR},
+        <if test="temps != null">
+            temps = #{temps,jdbcType=LONGVARBINARY}
+        </if>
+
+        where id = #{id,jdbcType=INTEGER} and isdelete=0
+    </update>
 </mapper>

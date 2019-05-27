@@ -1,12 +1,13 @@
 package com.tomato.dao;
 
-import com.tomato.entity.Admin;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminMapperTest {
 
@@ -14,7 +15,7 @@ public class AdminMapperTest {
 
   @Autowired private AdminMapper mapper;
 
-  @Before
+  //  @Before
   public void setUp() throws Exception {
     // 加载spring配置文件
     applicationContext =
@@ -31,6 +32,35 @@ public class AdminMapperTest {
 
   @Test
   public void insert() {
-    Admin a = new Admin();
+
+    //    Admin a = new Admin();
+
+    //    System.out.println(11111);
+    List<String> ls = new ArrayList<>(1001 / 40 + 1);
+    //    for (int i = 0; i <= 1001 / 4; i++) {}
+    for (int i = 0; i < 26; i++) {
+      for (int j = 0; j < 10; j++) {
+        if (40 * i + 30 + j < 1039) {
+          ls.add(
+              (40 * i + j)
+                  + " "
+                  + (40 * i + 10 + j)
+                  + " "
+                  + (40 * i + 20 + j)
+                  + " "
+                  + (40 * i + 30 + j));
+        } else if (40 * i + 20 + j < 1039) {
+          ls.add((40 * i + j) + " " + (40 * i + 10 + j) + " " + (40 * i + 20 + j));
+        } else if (40 * i + 10 + j < 1039) {
+          ls.add((40 * i + j) + " " + (40 * i + 10 + j));
+        } else if (40 * i + j < 1039) {
+          ls.add((40 * i + j) + " ");
+        }
+      }
+    }
+
+    for (int i = 0; i < ls.size(); i++) {
+      System.out.println(ls.get(i));
+    }
   }
 }

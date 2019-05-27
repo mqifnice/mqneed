@@ -23,7 +23,9 @@ public class AdminController {
   @Autowired private AdminService adminService;
 
   @RequestMapping("/login")
-  public String login(String email, String password, HttpSession session) {
+  public ModelAndView login(String email, String password, HttpSession session) {
+    ModelAndView mv = new ModelAndView();
+
     if (email == null || "".equals(email)) {
       email = (String) session.getAttribute("email");
       password = (String) session.getAttribute("password");
@@ -37,14 +39,17 @@ public class AdminController {
       subject.login(new UsernamePasswordToken(email, password));
     } catch (AuthenticationException ex) {
       System.out.println("登陆失败: " + ex.getMessage());
-      return "login";
+      mv.setViewName("login");
+      return mv;
     }
     //    if (!("515874047@qq.com").equals(email) || !("123456").equals(password)) {}
-
+    Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
     session.setAttribute("email", email);
     session.setAttribute("password", password);
+    mv.setViewName("index");
+    mv.addObject("adminname", admin.getName());
 
-    return "index";
+    return mv;
   }
 
   @RequestMapping("/user")
@@ -103,7 +108,7 @@ public class AdminController {
   public ModelAndView updateAdmin(Admin admin) {
     ModelAndView mv = new ModelAndView();
 
-    mv.setViewName("user");
+    mv.setViewName("login");
     if (admin.getId() == null) {
       System.out.println("请求的链接不正确,请重新操作.");
     }
@@ -111,6 +116,19 @@ public class AdminController {
     Message ms = adminService.updateAdmin(admin);
     mv.addObject("message", ms.getMess());
     mv.addObject("flag", ms.getFlag());
+    Subject currentUser = SecurityUtils.getSubject();
+    String result = "logout";
+    currentUser.logout();
+    return mv;
+  }
+
+  @RequestMapping("/logout")
+  public ModelAndView logout() {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("login");
+    Subject currentUser = SecurityUtils.getSubject();
+    currentUser.logout();
+    System.out.println("xxxxxxxxxxxxxxx");
     return mv;
   }
 

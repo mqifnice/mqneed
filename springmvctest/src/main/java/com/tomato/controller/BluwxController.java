@@ -1,15 +1,18 @@
 package com.tomato.controller;
 
+import com.tomato.entity.Tempdeatil;
+import com.tomato.service.TempDetailService;
 import com.tomato.until.AesCbcUtil;
 import com.tomato.until.HttpRequest;
+import com.tomato.until.Message;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -18,6 +21,8 @@ public class BluwxController {
 
   Logger logger = Logger.getLogger(BluwxController.class);
 
+  @Autowired private TempDetailService tempDetailService;
+
   @RequestMapping("/index")
   public String index() {
     System.out.println("11111111111111");
@@ -25,14 +30,21 @@ public class BluwxController {
   }
 
   @RequestMapping("/uptemps")
-  public String uptemps(List<String> temps) {
-    for (int i = 0; i < temps.size(); i++) {
-      System.out.println(temps.get(i) + "");
-      logger.info(temps.get(i));
+  @ResponseBody
+  public Map uptemps(Tempdeatil tempdeatil) {
+    logger.info("开始");
+    Map map = new HashMap();
+    if (tempdeatil == null) {
+      logger.info("出错");
+      map.put("status", 0);
+      map.put("msg", "数据异常");
+      return map;
     }
-
-    System.out.println("11111111111111");
-    return "index";
+    logger.info("传参");
+    Message message = tempDetailService.save(tempdeatil);
+    map.put("status", message.getFlag());
+    map.put("msg", message.getMess());
+    return map;
   }
 
   @RequestMapping("/decodeUserInfo")

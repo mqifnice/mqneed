@@ -47,7 +47,7 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="">
                     <!-- Logo icon -->
                     <b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -78,8 +78,8 @@
                                             href="javascript:void(0)"><i class="ti-menu"></i></a></li>
                     <li class="nav-item hidden-sm-down">
                         <form class="app-search p-l-20">
-                            <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i
-                                class="ti-search"></i></a>
+                            <%--<input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i--%>
+                            <%--class="ti-search"></i></a>--%>
                         </form>
                     </li>
                 </ul>
@@ -88,9 +88,15 @@
                 <!-- ============================================================== -->
                 <ul class="navbar-nav my-lg-0">
                     <li class="nav-item dropdown">
-                        <%--<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""--%>
-                        <%--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img--%>
-                        <%--src="assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5"/>Markarn Doe</a>--%>
+                        <%--Markarn Doe--%>
+                        ${admin.name}
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="/admin/logout"
+                        <%--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"--%>
+                        >
+                            [注销]
+                            <%--<img--%>
+                            <%--src="/assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5"/>--%>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -112,10 +118,10 @@
                         <a href="/admin/login" class="waves-effect"><i class="fa fa-table m-r-10"
                                                                        aria-hidden="true"></i>设备列表</a>
                     </li>
-                    <li>
-                        <a href="/device/detail" class="waves-effect"><i class="fa fa-clock-o m-r-10"
-                                                                         aria-hidden="true"></i>详情</a>
-                    </li>
+                    <%--<li>--%>
+                    <%--<a href="/device/detail" class="waves-effect"><i class="fa fa-clock-o m-r-10"--%>
+                    <%--aria-hidden="true"></i>详情</a>--%>
+                    <%--</li>--%>
                     <li>
                         <a href="/admin/user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>账户</a>
                     </li>
@@ -242,6 +248,14 @@
                                     <div class="col-md-12">
                                         <input type="text" name="phone" placeholder="${admin.phone}"
                                                value="${admin.phone}"
+                                               class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">设备识别码</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="deviceflag" placeholder="${admin.deviceflag}"
+                                               value="${admin.deviceflag}" maxlength="8"
                                                class="form-control form-control-line">
                                     </div>
                                 </div>

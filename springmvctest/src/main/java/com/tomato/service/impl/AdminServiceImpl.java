@@ -92,6 +92,7 @@ public class AdminServiceImpl implements AdminService {
     a.setEmail(admin.getEmail());
     a.setMessage(admin.getMessage());
     a.setPhone(admin.getPhone());
+    a.setDeviceflag(admin.getDeviceflag());
     if (!StringUtils.isBlank(admin.getPwd())) {
       a.setPwd(MD5Until.md5(admin.getPwd()));
     }

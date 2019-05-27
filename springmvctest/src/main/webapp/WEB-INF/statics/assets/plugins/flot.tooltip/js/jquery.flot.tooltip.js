@@ -8,7 +8,7 @@
  * 
  * build on 2015-05-11
  * released under MIT License, 2012
-*/ 
+*/
 (function ($) {
     // plugin options, default values
     var defaultOptions = {
@@ -37,7 +37,8 @@
             lines: false,
 
             // callbacks
-            onHover: function (flotItem, $tooltipEl) {},
+            onHover: function (flotItem, $tooltipEl) {
+            },
 
             $compat: false
         }
@@ -98,17 +99,17 @@
             var $tip = that.getDomElement();
 
             // bind event
-            $( plot.getPlaceholder() ).bind("plothover", plothover);
+            $(plot.getPlaceholder()).bind("plothover", plothover);
 
             $(eventHolder).bind('mousemove', mouseMove);
         });
 
-        plot.hooks.shutdown.push(function (plot, eventHolder){
+        plot.hooks.shutdown.push(function (plot, eventHolder) {
             $(plot.getPlaceholder()).unbind("plothover", plothover);
             $(eventHolder).unbind("mousemove", mouseMove);
         });
 
-        function mouseMove(e){
+        function mouseMove(e) {
             var pos = {};
             pos.x = e.pageX;
             pos.y = e.pageY;
@@ -117,16 +118,21 @@
 
         function plothover(event, pos, item) {
             // Simple distance formula.
+            // console.log(pos);
+            // console.log(item);
+
             var lineDistance = function (p1x, p1y, p2x, p2y) {
                 return Math.sqrt((p2x - p1x) * (p2x - p1x) + (p2y - p1y) * (p2y - p1y));
             };
+            // console.log(lineDistance);
+
 
             // Here is some voodoo magic for determining the distance to a line form a given point {x, y}.
             var dotLineLength = function (x, y, x0, y0, x1, y1, o) {
                 if (o && !(o =
                     function (x, y, x0, y0, x1, y1) {
-                        if (typeof x0 !== 'undefined') return { x: x0, y: y };
-                        else if (typeof y0 !== 'undefined') return { x: x, y: y0 };
+                        if (typeof x0 !== 'undefined') return {x: x0, y: y};
+                        else if (typeof y0 !== 'undefined') return {x: x, y: y0};
 
                         var left,
                             tg = -1 / ((y1 - y0) / (x1 - x0));
@@ -135,8 +141,8 @@
                             x: left = (x1 * (x * tg - y + y0) + x0 * (x * -tg + y - y1)) / (tg * (x1 - x0) + y0 - y1),
                             y: tg * left - tg * x + y
                         };
-                    } (x, y, x0, y0, x1, y1),
-                    o.x >= Math.min(x0, x1) && o.x <= Math.max(x0, x1) && o.y >= Math.min(y0, y1) && o.y <= Math.max(y0, y1))
+                    }(x, y, x0, y0, x1, y1),
+                o.x >= Math.min(x0, x1) && o.x <= Math.max(x0, x1) && o.y >= Math.min(y0, y1) && o.y <= Math.max(y0, y1))
                 ) {
                     var l1 = lineDistance(x, y, x0, y0), l2 = lineDistance(x, y, x1, y1);
                     return l1 > l2 ? l2 : l1;
@@ -145,7 +151,7 @@
                     return Math.abs(a * x + b * y + c) / Math.sqrt(a * a + b * b);
                 }
             };
-
+            // console.log(item);
             if (item) {
                 plot.showTooltip(item, pos);
             } else if (that.plotOptions.series.lines.show && that.tooltipOptions.lines === true) {
@@ -173,8 +179,8 @@
                         return;
                     }
 
-                    var pointPrev = { x: series.data[xBeforeIndex][0], y: series.data[xBeforeIndex][1] },
-                        pointNext = { x: series.data[xAfterIndex][0], y: series.data[xAfterIndex][1] };
+                    var pointPrev = {x: series.data[xBeforeIndex][0], y: series.data[xBeforeIndex][1]},
+                        pointNext = {x: series.data[xAfterIndex][0], y: series.data[xAfterIndex][1]};
 
                     var distToLine = dotLineLength(series.xaxis.p2c(pos.x), series.yaxis.p2c(pos.y), series.xaxis.p2c(pointPrev.x),
                         series.yaxis.p2c(pointPrev.y), series.xaxis.p2c(pointNext.x), series.yaxis.p2c(pointNext.y), false);
@@ -182,7 +188,7 @@
                     if (distToLine < closestTrace.distance) {
 
                         var closestIndex = lineDistance(pointPrev.x, pointPrev.y, pos.x, pos.y) <
-                            lineDistance(pos.x, pos.y, pointNext.x, pointNext.y) ? xBeforeIndex : xAfterIndex;
+                        lineDistance(pos.x, pos.y, pointNext.x, pointNext.y) ? xBeforeIndex : xAfterIndex;
 
                         var pointSize = series.datapoints.pointsize;
 
@@ -234,14 +240,13 @@
         // Quick little function for showing the tooltip.
         plot.showTooltip = function (target, position) {
             var $tip = that.getDomElement();
-
             // convert tooltip content template to real tipText
             var tipText = that.stringFormat(that.tooltipOptions.content, target);
             if (tipText === '')
-            	return;
+                return;
 
             $tip.html(tipText);
-            plot.setTooltipPosition({ x: position.pageX, y: position.pageY });
+            plot.setTooltipPosition({x: position.pageX, y: position.pageY});
             $tip.css({
                 left: that.tipPosition.x + that.tooltipOptions.shifts.x,
                 top: that.tipPosition.y + that.tooltipOptions.shifts.y
@@ -266,11 +271,11 @@
     FlotTooltip.prototype.getDomElement = function () {
         var $tip = $('.' + this.tooltipOptions.cssClass);
 
-        if( $tip.length === 0 ){
+        if ($tip.length === 0) {
             $tip = $('<div />').addClass(this.tooltipOptions.cssClass);
             $tip.appendTo('body').hide().css({position: 'absolute'});
 
-            if(this.tooltipOptions.defaultTheme) {
+            if (this.tooltipOptions.defaultTheme) {
                 $tip.css({
                     'background': '#fff',
                     'z-index': '1040',
@@ -309,20 +314,24 @@
         var x, y, customText, p;
 
         // for threshold plugin we need to read data from different place
-        if (typeof item.series.threshold !== "undefined") {
-            x = item.datapoint[0];
-            y = item.datapoint[1];
-            customText = item.datapoint[2];
-        } else if (typeof item.series.lines !== "undefined" && item.series.lines.steps) {
-            x = item.series.datapoints.points[item.dataIndex * 2];
-            y = item.series.datapoints.points[item.dataIndex * 2 + 1];
-            // TODO: where to find custom text in this variant?
-            customText = "";
-        } else {
-            x = item.series.data[item.dataIndex][0];
-            y = item.series.data[item.dataIndex][1];
-            customText = item.series.data[item.dataIndex][2];
-        }
+        // if (typeof item.series.threshold !== "undefined") {
+        //     x = item.datapoint[0];
+        //     y = item.datapoint[1];
+        //     customText = item.datapoint[2];
+        // } else if (typeof item.series.lines !== "undefined" && item.series.lines.steps) {
+        //     x = item.series.datapoints.points[item.dataIndex * 2];
+        //     y = item.series.datapoints.points[item.dataIndex * 2 + 1];
+        //     // TODO: where to find custom text in this variant?
+        //     customText = item.datapoint[2];
+        // } else {
+        //     x = item.series.data[item.dataIndex][0];
+        //     y = item.series.data[item.dataIndex][1];
+        //     customText = item.series.data[item.dataIndex][2];
+        // }
+
+        x = item.series.data[item.dataIndex][0];
+        y = item.series.data[item.dataIndex][1];
+        customText = item.series.data[item.dataIndex][2];
 
         // I think this is only in case of threshold plugin
         if (item.series.label === null && item.series.originSeries) {
@@ -344,7 +353,7 @@
             p = item.series.percent;
         } else if (typeof (item.series.percents) !== 'undefined') {
             p = item.series.percents[item.dataIndex];
-        }        
+        }
         if (typeof p === 'number') {
             content = this.adjustValPrecision(percentPattern, content, p);
         }
@@ -356,7 +365,7 @@
             //remove %s if label is undefined
             content = content.replace(seriesPattern, "");
         }
-        
+
         // color match
         if (typeof(item.series.color) !== 'undefined') {
             content = content.replace(colorPattern, item.series.color);
@@ -433,20 +442,26 @@
             }
         }
 
+
         // if no value customization, use tickFormatter by default
         if (typeof item.series.xaxis.tickFormatter !== 'undefined') {
             //escape dollar
             content = content.replace(xPatternWithoutPrecision, item.series.xaxis.tickFormatter(x, item.series.xaxis).replace(/\$/g, '$$'));
         }
+
         if (typeof item.series.yaxis.tickFormatter !== 'undefined') {
             //escape dollar
             content = content.replace(yPatternWithoutPrecision, item.series.yaxis.tickFormatter(y, item.series.yaxis).replace(/\$/g, '$$'));
         }
 
+
         if (customText)
             content = content.replace(customTextPattern, customText);
 
-        return content;
+        // console.log(customText);
+        // console.log("时间：" + customText + content);
+
+        return "时间：" + customText + content;
     };
 
     // helpers just for readability
@@ -477,8 +492,8 @@
 
         var precision;
         var matchResult = content.match(pattern);
-        if( matchResult !== null ) {
-            if(RegExp.$1 !== '') {
+        if (matchResult !== null) {
+            if (RegExp.$1 !== '') {
                 precision = RegExp.$1;
                 value = value.toFixed(precision);
 
@@ -486,6 +501,7 @@
                 content = content.replace(pattern, value);
             }
         }
+        // console.log(content);
         return content;
     };
 
@@ -503,7 +519,7 @@
 
     //
     var init = function (plot) {
-      new FlotTooltip(plot);
+        new FlotTooltip(plot);
     };
 
     // define Flot plugin

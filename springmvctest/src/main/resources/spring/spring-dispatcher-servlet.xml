@@ -9,6 +9,7 @@
     <!--此文件负责整个mvc中的配置-->
     <context:component-scan base-package="com.*"/>
     <context:component-scan base-package="com.tomato.dao"/>
+    <context:component-scan base-package="com.tomato.service"/>
     <context:component-scan base-package="com.tomato.controller"/>
 
     <!--启用spring的一些annotation -->
@@ -89,6 +90,7 @@
             </array>
         </property>
         <property name="typeAliasesPackage" value="com.tomato.entity"/>
+
 
     </bean>
 
