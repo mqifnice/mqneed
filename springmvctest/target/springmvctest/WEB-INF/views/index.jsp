@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/kodinger.png">
     <title></title>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -384,13 +384,40 @@
                 {
                     field: 'othername',
                     title: '设备描述'
-                }, {
+                },
+                {
+                    field: 'status',
+                    title: '设备状态',
+                    formatter: function (value, row, index) {
+
+                        switch (value) {
+                            case 0:
+                                return "未配置";
+                                break;
+                            case 1:
+                                return "已配置";
+                                break;
+                            case 2:
+                                return "启动延时";
+                                break;
+                            case 3:
+                                return "记录中";
+                                break;
+                            case 4:
+                                return "已停止";
+                                break;
+                            default:
+                                return "N/A";
+                        }
+                    }
+                },
+                {
                     field: 'uptime',
                     title: '上传时间',
                     width: 200,
                     formatter: function (value, row, index) {
                         let d = new Date(value);
-                        return d.pattern("yyyy-MM-dd hh:mm:ss")
+                        return d.pattern("yyyy-MM-dd HH:mm:ss")
                     }
                 },
                 {
@@ -413,7 +440,7 @@
         var result = "";
         result += "<a href='javascript:;' class='btn btn-xs btn-primary' onclick=\"ViewById('" + id + "', view='view')\" title='查看'><span class='glyphicon glyphicon-search'>查看</span></a>";
         // result += "<a href='javascript:;' class='btn btn-xs blue' onclick=\"EditById('" + id + "')\" title='编辑'><span class='glyphicon glyphicon-pencil'>编辑</span></a>";
-        result += "<a href='javascript:;' class='btn btn-xs btn-danger' onclick=\"DeleteByIds('" + id + "')\" title='删除'><span class='glyphicon glyphicon-remove'>删除</span></a>";
+        result += "&nbsp &nbsp<a href='javascript:;' class='btn btn-xs btn-danger' onclick=\"DeleteByIds('" + id + "')\" title='删除'><span class='glyphicon glyphicon-remove'>删除</span></a>";
         return result;
     }
 

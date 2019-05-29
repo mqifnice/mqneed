@@ -41,6 +41,8 @@ public class AdminController {
       subject.login(new UsernamePasswordToken(email, password));
     } catch (AuthenticationException ex) {
       System.out.println("登陆失败: " + ex.getMessage());
+      //      mv.addObject("message", "登录失败，请确认用户名密码是否正确。");
+      //      mv.addObject("flag", 2);
       mv.setViewName("login");
       return mv;
     }

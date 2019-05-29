@@ -5,6 +5,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.security.Security;
 import java.util.Properties;
 
 public class EmailUill {
@@ -28,12 +29,18 @@ public class EmailUill {
       String centent)
       throws Exception {
     Properties prop = new Properties();
+    Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+    final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
     prop.put("mail.host", "smtp.mxhichina.com");
     prop.put("mail.transport.protocol", "smtp");
+    prop.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+    prop.setProperty("mail.smtp.socketFactory.fallback", "false");
     prop.put("mail.smtp.auth", "true");
+    prop.put("mail.smtp.port", 465);
+    prop.put("mail.smtp.socketFactory.port", 465);
     Session session = Session.getInstance(prop);
     session.setDebug(true);
-    Transport ts = session.getTransport();
+    Transport ts = session.getTransport("smtp");
     ts.connect(emailName, emailPassword);
     Message message = new MimeMessage(session);
     message.setFrom(new InternetAddress(fromEmail));

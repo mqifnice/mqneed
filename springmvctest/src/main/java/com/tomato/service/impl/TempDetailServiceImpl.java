@@ -22,7 +22,7 @@ public class TempDetailServiceImpl implements TempDetailService {
     Message m = new Message();
     //
     String deviceid = tempdeatil.getDeviceid();
-    if (deviceid == null || deviceid == "") {
+    if (deviceid == null || "".equals(deviceid)) {
       m.setFlag(0);
       m.setMess("设备标识传入错误");
     } else {
@@ -30,6 +30,7 @@ public class TempDetailServiceImpl implements TempDetailService {
       // 查找数据库设备信息
       Tempdeatil tempdeatilofDeviceId = mapper.selectByDeviceId(tempdeatil);
       // 初始化数据
+      //      logger.info(tempdeatilofDeviceId.getDeviceid());
 
       List<String> templist = tempdeatil.getTemplist();
       if (templist != null) {
@@ -53,8 +54,42 @@ public class TempDetailServiceImpl implements TempDetailService {
       } else {
         // 更新保存
         //        if (!tempdeatil.getPoint().equals(tempdeatilofDeviceId.getPoint())) {
-        tempdeatil.setId(tempdeatilofDeviceId.getId());
-        mapper.updateByPrimaryKey(tempdeatil);
+        //        tempdeatil.setId(tempdeatilofDeviceId.getId());
+        tempdeatilofDeviceId.setDeviceid(tempdeatil.getDeviceid());
+        tempdeatilofDeviceId.setDeviceno(tempdeatil.getDeviceno());
+        tempdeatilofDeviceId.setOthername(tempdeatil.getOthername());
+        tempdeatilofDeviceId.setStatus(tempdeatil.getStatus());
+        tempdeatilofDeviceId.setStarttime(tempdeatil.getStarttime());
+        tempdeatilofDeviceId.setPoint(tempdeatil.getPoint());
+        tempdeatilofDeviceId.setMax(tempdeatil.getMax());
+        tempdeatilofDeviceId.setMin(tempdeatil.getMin());
+        tempdeatilofDeviceId.setAvg(tempdeatil.getAvg());
+        tempdeatilofDeviceId.setMkt(tempdeatil.getMkt());
+        tempdeatilofDeviceId.setIsdelete(0);
+        tempdeatilofDeviceId.setIsalarm(tempdeatil.getIsalarm());
+        tempdeatilofDeviceId.setAlarmmax(tempdeatil.getAlarmmax());
+        tempdeatilofDeviceId.setAlarmmin(tempdeatil.getAlarmmin());
+        tempdeatilofDeviceId.setStoptime(tempdeatil.getStoptime());
+        tempdeatilofDeviceId.setUploadpwd(tempdeatil.getUploadpwd());
+        tempdeatilofDeviceId.setWritepwd(tempdeatil.getWritepwd());
+        tempdeatilofDeviceId.setReadpwd(tempdeatil.getReadpwd());
+        tempdeatilofDeviceId.setDeviceflag(tempdeatil.getDeviceflag());
+        tempdeatilofDeviceId.setNickname(tempdeatil.getNickname());
+        tempdeatilofDeviceId.setOpenid(tempdeatil.getOpenid());
+        tempdeatilofDeviceId.setUptime(System.currentTimeMillis());
+        //        tempdeatilofDeviceId.setUptime(tempdeatil.getUptime());
+        tempdeatilofDeviceId.setRecordinterval(tempdeatil.getRecordinterval());
+        tempdeatilofDeviceId.setRecordcycle(tempdeatil.getRecordcycle());
+        tempdeatilofDeviceId.setStartmode(tempdeatil.getStartmode());
+        tempdeatilofDeviceId.setStartdelay(tempdeatil.getStartdelay());
+        tempdeatilofDeviceId.setStopmode(tempdeatil.getStopmode());
+        tempdeatilofDeviceId.setVer(tempdeatil.getVer());
+        tempdeatilofDeviceId.setPn(tempdeatil.getPn());
+        tempdeatilofDeviceId.setTemps(tempdeatil.getTemps());
+        logger.info("昵称：" + tempdeatilofDeviceId.getNickname());
+        logger.info("平均温度：" + tempdeatilofDeviceId.getNickname());
+
+        mapper.updateByPrimaryKey(tempdeatilofDeviceId);
         m.setFlag(1);
         m.setMess("数据上传完成");
         //        }

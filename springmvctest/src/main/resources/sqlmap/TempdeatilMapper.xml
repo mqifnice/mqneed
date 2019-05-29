@@ -17,9 +17,9 @@
         <result column="avg" property="avg" jdbcType="DECIMAL"/>
         <result column="mkt" property="mkt" jdbcType="DECIMAL"/>
         <result column="stoptime" property="stoptime" jdbcType="BIGINT"/>
-        <result column="readpwd" property="readpwd" jdbcType="VARCHAR"/>
-        <result column="writepwd" property="writepwd" jdbcType="VARCHAR"/>
-        <result column="uploadpwd" property="uploadpwd" jdbcType="VARCHAR"/>
+        <!--<result column="readpwd" property="readpwd" jdbcType="VARCHAR"/>-->
+        <!--<result column="writepwd" property="writepwd" jdbcType="VARCHAR"/>-->
+        <!--<result column="uploadpwd" property="uploadpwd" jdbcType="VARCHAR"/>-->
         <result column="deviceflag" property="deviceflag" jdbcType="VARCHAR"/>
         <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
         <result column="uptime" property="uptime" jdbcType="BIGINT"/>
@@ -55,14 +55,14 @@
     <select id="selectAll" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from tempdeatil
+        from tempdeatil where isdelete=0
 
     </select>
     <select id="selectAllByFlag" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from tempdeatil
-        where deviceflag = #{deviceflag,jdbcType=VARCHAR} and isdelete=0 order by id desc
+        where deviceflag = #{deviceflag,jdbcType=VARCHAR} and isdelete=0 order by uptime desc
 
     </select>
     <select id="selectByDeviceId" resultMap="ResultMapWithBLOBs" parameterType="com.tomato.entity.Tempdeatil">
@@ -71,7 +71,7 @@
         ,
         <include refid="Blob_Column_List"/>
         from tempdeatil
-        where deviceid = #{deviceid,jdbcType=VARCHAR} and starttime= #{starttime,jdbcType=BIGINT}
+        where deviceid = #{deviceid,jdbcType=VARCHAR} and isdelete=0 and starttime= #{starttime,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tempdeatil
@@ -470,6 +470,6 @@
             temps = #{temps,jdbcType=LONGVARBINARY}
         </if>
 
-        where id = #{id,jdbcType=INTEGER} and isdelete=0
+        where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

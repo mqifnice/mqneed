@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/kodinger.png">
     <title></title>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,8 @@
                     <b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="/image/kodinger.png" alt="homepage" class="dark-logo"/>
+                        <img src="/image/kodinger.png" style="height: 33px; width: 34px;" alt="homepage"
+                             class="dark-logo"/>
 
                     </b>
                     <!--End Logo icon -->
@@ -313,6 +314,8 @@
         let p2 = $('#p2').val();
         if (p1 == p2) {
             return true;
+        } else {
+            alert("密码输入不一致，请重新输入。")
         }
         return false;
     }

@@ -115,16 +115,28 @@ public class TempDetailController {
     switch (stopmode) {
       case "0":
         stopmode1 = "N/A";
+        break;
+
       case "1":
         stopmode1 = "POR";
+        break;
+
       case "2":
         stopmode1 = "Power";
+        break;
+
       case "3":
         stopmode1 = "Protect";
+        break;
+
       case "4":
         stopmode1 = "手动";
+        break;
+
       case "5":
         stopmode1 = "USB";
+        break;
+
       case "6":
         stopmode1 = "自动";
         break;
@@ -138,8 +150,11 @@ public class TempDetailController {
     switch (startmode) {
       case "65":
         startmode1 = "自动";
+        break;
+
       case "77":
         startmode1 = "手动";
+        break;
 
       default:
         startmode1 = "N/A";
@@ -201,7 +216,7 @@ public class TempDetailController {
       }
 
       tempdeatil.setLogTime(sb.toString());
-      System.out.println(sb.toString());
+      //      System.out.println(sb.toString());
     }
     return ls;
   }

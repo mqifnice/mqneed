@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
 
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/kodinger.png">
     <title></title>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -181,24 +181,40 @@
                         <div class="card-block">
                             <h4 class="card-title">配置信息</h4>
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div>序列号：${tempdeatil.deviceno}</div>
-                                    <div>PN：${tempdeatil.pn}</div>
-                                    <div>VER：${tempdeatil.ver}</div>
-                                    <div>启动模式：${startmode}</div>
+                                <div class="col-sm-2">
+                                    <div>序列号：</div>
+                                    <%--<div>PN：${tempdeatil.pn}</div>--%>
+                                    <%--<div>VER：${tempdeatil.ver}</div>--%>
+                                    <div>启动模式：</div>
+                                    <div>&nbsp;</div>
                                     <div>&nbsp;</div>
 
                                 </div>
-                                <div class="col-sm-6">
-                                    <div>启动延时： <fmt:formatNumber value="${tempdeatil.startdelay/60}"
+                                <div class="col-sm-4">
+                                    <div>${tempdeatil.deviceno}</div>
+                                    <%--<div>PN：${tempdeatil.pn}</div>--%>
+                                    <%--<div>VER：${tempdeatil.ver}</div>--%>
+                                    <div>${startmode}</div>
+                                    <div>&nbsp;</div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div>启动延时：
+                                    </div>
+                                    <div>记录周期：</div>
+                                    <div>记录间隔：
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div><fmt:formatNumber value="${tempdeatil.startdelay/60}"
                                     />分
                                     </div>
-                                    <div>记录周期：${recordcycle}</div>
-                                    <div>记录间隔： <fmt:formatNumber value="${tempdeatil.recordinterval/60}"
+                                    <div>${recordcycle}</div>
+                                    <div><fmt:formatNumber value="${tempdeatil.recordinterval/60}"
                                     /> 分
                                     </div>
                                 </div>
                             </div>
+
 
                             <%--<div class="text-right">--%>
                             <%--<h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> $120</h2>--%>
@@ -220,26 +236,46 @@
                             <h4 class="card-title">记录概要</h4>
 
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div>启动时间：${starttime}</div>
-                                    <div>停止时间：${stoptime}</div>
-                                    <div>停止模式：${stopmode}</div>
-                                    <div>记录时长：${tempdeatil.logTime}</div>
-                                    <div>数据点：${tempdeatil.point}</div>
+                                <div class="col-sm-2">
+                                    <div>启动时间：</div>
+                                    <div>停止时间：</div>
+                                    <div>记录时长：</div>
+                                    <div>数据点：</div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div>最高：<fmt:formatNumber value="${tempdeatil.max}" pattern="#.#"
-                                                              type="number"/>℃
+                                <div class="col-sm-4">
+
+                                    <div>${starttime}</div>
+                                    <div>${stoptime}</div>
+                                    <div>${stopmode}</div>
+                                    <div>${tempdeatil.logTime}</div>
+                                    <div>${tempdeatil.point}</div>
+
+                                </div>
+                                <div class="col-sm-2">
+                                    <div>最高：
                                     </div>
-                                    <div>最低：<fmt:formatNumber value="${tempdeatil.min}" pattern="#.#"
-                                                              type="number"/>℃
+                                    <div>最低：
                                     </div>
-                                    <div>平均：<fmt:formatNumber value="${tempdeatil.avg}" pattern="#.#"
-                                                              type="number"/>℃
+                                    <div>平均：
                                     </div>
-                                    <div>MKT：<fmt:formatNumber value="${tempdeatil.mkt}" pattern="#.#"
-                                                               type="number"/>℃
+                                    <div>MKT：
                                     </div>
+                                </div>
+                                <div class="col-sm-4">
+
+                                    <div><fmt:formatNumber value="${tempdeatil.max}" pattern="#.#"
+                                                           type="number"/>℃
+                                    </div>
+                                    <div><fmt:formatNumber value="${tempdeatil.min}" pattern="#.#"
+                                                           type="number"/>℃
+                                    </div>
+                                    <div><fmt:formatNumber value="${tempdeatil.avg}" pattern="#.#"
+                                                           type="number"/>℃
+                                    </div>
+                                    <div><fmt:formatNumber value="${tempdeatil.mkt}" pattern="#.#"
+                                                           type="number"/>℃
+                                    </div>
+
                                 </div>
                             </div>
                             <%--<div class="text-right">--%>

@@ -132,6 +132,8 @@
                 /js/** = anon
                 /css/** = anon
                 /admin/register=anon
+                /admin/login=anon
+
                 /admin/forgot*=anon
                 /blu/**=anon
                 <!-- 可匿名访问路径，例如：验证码、登录连接、退出连接等 -->
