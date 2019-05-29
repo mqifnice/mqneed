@@ -143,7 +143,7 @@ public class AdminServiceImpl implements AdminService {
     String resetPassHref =
         "www.tempsir.cn" + "/admin/forgotview?sid=" + digitalSignature + "&id=" + a.getId();
 
-    String emailContent = "请勿回复本邮件.点击下面的链接,重设密码,本邮件超过30分钟,链接将会失效，需要重新申请找回密码." + resetPassHref;
+    String emailContent = "请勿回复本邮件.点击下面的链接,重设密码,本邮件超过30分钟,链接将会失效，需要重新申请找回密码" + resetPassHref;
 
     return emailContent;
   }

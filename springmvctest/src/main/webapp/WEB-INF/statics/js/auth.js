@@ -62,7 +62,7 @@ var Auth = {
 
         }, 100);
 
-        Auth.vars.login_btn.innerText = 'Forgot Password';
+        Auth.vars.login_btn.innerText = '发送验证';
 
         Auth.setHeight(Auth.vars.lowin_wrapper_height - Auth.vars.password_group_height);
         Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.forgot_url);
@@ -88,7 +88,7 @@ var Auth = {
             Auth.vars.password_group.classList.remove('lowin-animated-back');
         }, 1000);
 
-        Auth.vars.login_btn.innerText = 'Sign In';
+        Auth.vars.login_btn.innerText = '登录';
         Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.login_url);
 
         Auth.setHeight(Auth.vars.lowin_wrapper_height);

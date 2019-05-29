@@ -5,6 +5,7 @@ import com.tomato.service.AdminService;
 import com.tomato.until.MD5Until;
 import com.tomato.until.Message;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+  Logger logger = Logger.getLogger(AdminController.class);
 
   @Autowired private AdminService adminService;
 

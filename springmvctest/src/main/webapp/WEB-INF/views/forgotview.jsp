@@ -47,12 +47,12 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="#">
                     <!-- Logo icon -->
                     <b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+                        <img src="/image/kodinger.png" alt="homepage" class="dark-logo"/>
 
                     </b>
                     <!--End Logo icon -->

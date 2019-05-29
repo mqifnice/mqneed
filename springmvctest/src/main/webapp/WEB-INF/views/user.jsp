@@ -47,12 +47,13 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="#">
                     <!-- Logo icon -->
                     <b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+                        <img src="/image/kodinger.png" style="height: 33px; width: 34px;" alt="homepage"
+                             class="dark-logo"/>
 
                     </b>
                     <!--End Logo icon -->
@@ -251,14 +252,14 @@
                                                class="form-control form-control-line">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-12">设备识别码</label>
-                                    <div class="col-md-12">
-                                        <input type="text" name="deviceflag" placeholder="${admin.deviceflag}"
-                                               value="${admin.deviceflag}" maxlength="8"
-                                               class="form-control form-control-line">
-                                    </div>
-                                </div>
+                                <%--<div class="form-group">--%>
+                                <%--<label class="col-md-12">设备识别码</label>--%>
+                                <%--<div class="col-md-12">--%>
+                                <%--<input type="text" name="deviceflag" placeholder="${admin.deviceflag}"--%>
+                                <%--value="${admin.deviceflag}" maxlength="8"--%>
+                                <%--class="form-control form-control-line">--%>
+                                <%--</div>--%>
+                                <%--</div>--%>
                                 <div class="form-group">
                                     <label class="col-md-12">信息</label>
                                     <div class="col-md-12">

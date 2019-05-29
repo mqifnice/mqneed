@@ -54,12 +54,13 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="#">
                     <!-- Logo icon -->
                     <b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+                        <img src="/image/kodinger.png" style="height: 33px; width: 34px;" alt="homepage"
+                             class="dark-logo"/>
 
                     </b>
                     <!--End Logo icon -->
@@ -222,7 +223,7 @@
                                 <div class="col-sm-6">
                                     <div>启动时间：${starttime}</div>
                                     <div>停止时间：${stoptime}</div>
-                                    <div>停止模式：${startmode}</div>
+                                    <div>停止模式：${stopmode}</div>
                                     <div>记录时长：${tempdeatil.logTime}</div>
                                     <div>数据点：${tempdeatil.point}</div>
                                 </div>
@@ -507,7 +508,7 @@
                         show: true
                     },
                     points: {
-                        show: true
+                        // show: true
                     }
                 },
                 grid: {

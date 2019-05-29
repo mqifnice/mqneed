@@ -32,15 +32,18 @@ public class TempDetailServiceImpl implements TempDetailService {
       // 初始化数据
 
       List<String> templist = tempdeatil.getTemplist();
-      tempdeatil.setPoint(templist.size());
-      tempdeatil.setIsdelete(0);
-      try {
-        byte[] bytes = BlobUntil.obj2byte(templist);
-        tempdeatil.setTemps(bytes);
-      } catch (Exception e) {
-        logger.info(e.getMessage());
-        e.printStackTrace();
+      if (templist != null) {
+        tempdeatil.setPoint(templist.size());
+        tempdeatil.setIsdelete(0);
+        try {
+          byte[] bytes = BlobUntil.obj2byte(templist);
+          tempdeatil.setTemps(bytes);
+        } catch (Exception e) {
+          logger.info(e.getMessage());
+          e.printStackTrace();
+        }
       }
+
       Integer status = tempdeatil.getStatus();
       // 直接保存
       if (tempdeatilofDeviceId == null) {
@@ -49,12 +52,12 @@ public class TempDetailServiceImpl implements TempDetailService {
         m.setMess("数据上传完成");
       } else {
         // 更新保存
-        if (!tempdeatil.getPoint().equals(tempdeatilofDeviceId.getPoint())) {
-          tempdeatil.setId(tempdeatilofDeviceId.getId());
-          mapper.updateByPrimaryKey(tempdeatil);
-          m.setFlag(1);
-          m.setMess("数据上传完成");
-        }
+        //        if (!tempdeatil.getPoint().equals(tempdeatilofDeviceId.getPoint())) {
+        tempdeatil.setId(tempdeatilofDeviceId.getId());
+        mapper.updateByPrimaryKey(tempdeatil);
+        m.setFlag(1);
+        m.setMess("数据上传完成");
+        //        }
       }
       m.setFlag(1);
       m.setMess("数据上传完成");
