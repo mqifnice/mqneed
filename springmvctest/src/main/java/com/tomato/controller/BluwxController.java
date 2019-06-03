@@ -6,6 +6,7 @@ import com.tomato.until.AesCbcUtil;
 import com.tomato.until.HttpRequest;
 import com.tomato.until.Message;
 import org.activiti.engine.impl.util.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,24 @@ public class BluwxController {
     Message message = tempDetailService.save(tempdeatil);
     map.put("status", message.getFlag());
     map.put("msg", message.getMess());
+    return map;
+  }
+
+  @RequestMapping("/getuptime")
+  @ResponseBody
+  public Map getuptime(String deviceid, Long starttime) {
+    Map map = new HashMap();
+    if (StringUtils.isBlank(deviceid) || starttime == null) {
+      map.put("status", 0);
+      map.put("msg", "code 不能为空");
+      map.put("uptime", "");
+      return map;
+    }
+    // 获取上传时间
+    map = tempDetailService.getUpTime(deviceid, starttime);
+    logger.info("deviceid:" + deviceid);
+    logger.info("starttime:" + starttime);
+
     return map;
   }
 
